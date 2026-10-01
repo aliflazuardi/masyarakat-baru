@@ -102,7 +102,7 @@ Login, comments, leaderboards, server-side storage, real donation processing.
 |---|---|---|
 | Framework | **Next.js (App Router) with `output: 'export'`** | Matches the stack pitched in the deck, so the prototype *is* the proposed architecture. Static export means free hosting and no server. |
 | Language | TypeScript (strict) | Typed content schemas, so calculator and engine bugs show up at compile time. |
-| Styling | Tailwind CSS | Fast iteration; design tokens live in one config. |
+| Styling | Tailwind CSS v4 | Fast iteration; design tokens live in `src/app/globals.css` (`@theme`). |
 | Charts | Recharts | Declarative React charts, responsive, good enough for bar, line and donut charts. |
 | Content validation | zod | Validate every JSON content file in tests. This is the seam where a CMS plugs in later. |
 | Search | Plain normalised `includes`, with Fuse.js only if needed | Fewer than 30 fallacies does not need a search library. |
@@ -146,7 +146,7 @@ Derived from the deck's visual language.
 
 **Mood:** "ambient dark mode", blueprint grid, frosted-glass cards, high contrast, minimal text.
 
-### Color tokens (CSS variables, mapped in `tailwind.config`)
+### Color tokens (CSS variables in `src/app/globals.css`, mapped via `@theme`)
 
 | Token | Use | Starting value (tune for contrast) |
 |---|---|---|
@@ -435,12 +435,13 @@ masyarakat-baru/
 ├── CLAUDE.md                     # working rules for AI assistants
 ├── README.md                     # short public intro + live link
 ├── next.config.ts                # output: 'export'
-├── tailwind.config.ts
+├── scripts/serve-static.mjs      # preview/E2E server for out/
 ├── public/
 │   ├── og/                       # Open Graph images per page
 │   └── images/simulator/         # licensed images + CREDITS.md
 ├── src/
 │   ├── app/
+│   │   ├── globals.css           # design tokens (Tailwind v4 @theme)
 │   │   ├── layout.tsx            # nav, footer disclaimer, fonts, analytics
 │   │   ├── page.tsx              # F0 landing / proposal
 │   │   ├── bahasa-bayi/page.tsx  # F1
@@ -509,11 +510,11 @@ masyarakat-baru/
 Estimates are focused hours for one developer. Content writing is counted separately because it is the hidden cost.
 
 ### Phase 0: Setup (about 0.5 day)
-- [ ] Scaffold Next.js + TypeScript + Tailwind with `output: 'export'`
-- [ ] ESLint, Prettier, Vitest, Playwright, and a GitHub Actions CI workflow
-- [ ] Design tokens, fonts, layout shell, nav, footer disclaimer
-- [ ] `storage.ts`, `analytics.ts` (no-op in dev), `content.ts` and zod schemas
-- [ ] Deploy an empty shell to Vercel and confirm preview URLs work
+- [x] Scaffold Next.js + TypeScript + Tailwind with `output: 'export'`
+- [x] ESLint, Prettier, Vitest, Playwright, and a GitHub Actions CI workflow
+- [x] Design tokens, fonts, layout shell, nav, footer disclaimer
+- [x] `storage.ts`, `analytics.ts` (no-op in dev), `content.ts` and zod schemas
+- [ ] Deploy an empty shell to Vercel and confirm preview URLs work *(needs the repo owner to connect the repo in Vercel)*
 
 ### Phase 1: Kamus + Kuis Sesat Pikir (about 1.5 days + content)
 *Mirrors the deck's Phase 1: quickest to build and the most viral.*
@@ -602,6 +603,10 @@ Append new entries; don't rewrite old ones.
 | 2026-10-01 | JSON + zod content layer behind `content.ts` | Demonstrates the "CMS-ready" claim without running a CMS | Real headless CMS now (overkill for a pitch) |
 | 2026-10-01 | Indonesian UI, English code and docs | Audience is Indonesian | Bilingual from day one |
 | 2026-10-01 | Commits are authored by the repo owner only; no AI co-author trailers | Owner's preference | — |
+| 2026-10-01 | Next.js 16 + Tailwind v4: tokens in CSS `@theme`, no `tailwind.config` | v4's default, CSS-first config | Tailwind v3 with a JS config |
+| 2026-10-01 | Self-hosted fonts via `@fontsource-variable` instead of `next/font/google` | Builds work offline and in CI with no Google Fonts fetch | `next/font/google` |
+| 2026-10-01 | `trailingSlash: true` and a zero-dependency `scripts/serve-static.mjs` | Static hosts resolve `/route/` to `index.html`; E2E tests run against the exact `out/` that ships | `next start` (not available with static export), `serve` package |
+| 2026-10-01 | Playwright pinned to 1.56 | Matches the Chromium preinstalled in Claude Code cloud sessions; CI installs its own browser | Latest Playwright |
 
 ---
 
