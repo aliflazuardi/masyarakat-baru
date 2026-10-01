@@ -13,3 +13,11 @@ Read `BUILD_PLAN.md` before starting any work. It is the source of truth for sco
 - Conventional Commits (`feat:`, `fix:`, `content:`, `chore:`, `docs:`, `test:`).
 - Business logic lives in pure functions under `src/lib` with Vitest tests; components stay thin.
 - Every number shown to users must have a source in `src/content/*.json`.
+- Components read content through `src/lib/content.ts`, never by importing JSON directly.
+
+## Commands
+
+- `npm run check`: lint, typecheck, format check, unit tests and build. Run before every push.
+- `npm run test:e2e`: Playwright smoke tests against `out/` (build first).
+
+@AGENTS.md

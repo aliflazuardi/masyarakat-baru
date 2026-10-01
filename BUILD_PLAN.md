@@ -28,6 +28,7 @@
 14. [Risks and Mitigations](#14-risks-and-mitigations)
 15. [Open Questions](#15-open-questions)
 16. [Working Conventions](#16-working-conventions)
+17. [Action Items (later)](#17-action-items-later)
 
 ---
 
@@ -102,7 +103,7 @@ Login, comments, leaderboards, server-side storage, real donation processing.
 |---|---|---|
 | Framework | **Next.js (App Router) with `output: 'export'`** | Matches the stack pitched in the deck, so the prototype *is* the proposed architecture. Static export means free hosting and no server. |
 | Language | TypeScript (strict) | Typed content schemas, so calculator and engine bugs show up at compile time. |
-| Styling | Tailwind CSS | Fast iteration; design tokens live in one config. |
+| Styling | Tailwind CSS v4 | Fast iteration; design tokens live in `src/app/globals.css` (`@theme`). |
 | Charts | Recharts | Declarative React charts, responsive, good enough for bar, line and donut charts. |
 | Content validation | zod | Validate every JSON content file in tests. This is the seam where a CMS plugs in later. |
 | Search | Plain normalised `includes`, with Fuse.js only if needed | Fewer than 30 fallacies does not need a search library. |
@@ -110,7 +111,7 @@ Login, comments, leaderboards, server-side storage, real donation processing.
 | Unit tests | Vitest | Pure logic in `src/lib`. |
 | E2E smoke | Playwright | One happy-path test per route. |
 | Analytics | Umami Cloud or Plausible (cookieless) | No consent banner needed; custom events map to KPIs. |
-| Hosting | Vercel (preferred) or GitHub Pages | Vercel has zero-config Next.js and preview URLs per branch, which are useful to show in the email. |
+| Hosting | **GitHub Pages (temporary)**, then Vercel or similar | Pages is free and already next to the repo. It serves under `/masyarakat-baru/`, handled by the `BASE_PATH` env var. Move later for preview URLs per PR and a cleaner URL (see [Action Items](#17-action-items-later)). |
 | CI | GitHub Actions | lint, typecheck, test, build on every push. |
 | Font | Plus Jakarta Sans (headings and body), JetBrains Mono (numbers) | Plus Jakarta Sans was designed in Indonesia, which is a small and meaningful touch. |
 
@@ -146,7 +147,7 @@ Derived from the deck's visual language.
 
 **Mood:** "ambient dark mode", blueprint grid, frosted-glass cards, high contrast, minimal text.
 
-### Color tokens (CSS variables, mapped in `tailwind.config`)
+### Color tokens (CSS variables in `src/app/globals.css`, mapped via `@theme`)
 
 | Token | Use | Starting value (tune for contrast) |
 |---|---|---|
@@ -284,7 +285,7 @@ const set = pickN(pool, QUESTIONS_PER_DAY, seed(day)); // seeded shuffle, no rep
 ```
 Kuis Sesat Pikir #128 🧠
 🟩🟩🟥  2/3 · 🔥 5 hari
-masyarakat-baru.vercel.app/kuis-sesat-pikir
+aliflazuardi.github.io/masyarakat-baru/kuis-sesat-pikir
 ```
 
 **Content:** a pool of **at least 21 items** (one week of 3 per day), with 30 as the target. See the schema in §8.
@@ -435,12 +436,13 @@ masyarakat-baru/
 ├── CLAUDE.md                     # working rules for AI assistants
 ├── README.md                     # short public intro + live link
 ├── next.config.ts                # output: 'export'
-├── tailwind.config.ts
+├── scripts/serve-static.mjs      # preview/E2E server for out/
 ├── public/
 │   ├── og/                       # Open Graph images per page
 │   └── images/simulator/         # licensed images + CREDITS.md
 ├── src/
 │   ├── app/
+│   │   ├── globals.css           # design tokens (Tailwind v4 @theme)
 │   │   ├── layout.tsx            # nav, footer disclaimer, fonts, analytics
 │   │   ├── page.tsx              # F0 landing / proposal
 │   │   ├── bahasa-bayi/page.tsx  # F1
@@ -509,11 +511,11 @@ masyarakat-baru/
 Estimates are focused hours for one developer. Content writing is counted separately because it is the hidden cost.
 
 ### Phase 0: Setup (about 0.5 day)
-- [ ] Scaffold Next.js + TypeScript + Tailwind with `output: 'export'`
-- [ ] ESLint, Prettier, Vitest, Playwright, and a GitHub Actions CI workflow
-- [ ] Design tokens, fonts, layout shell, nav, footer disclaimer
-- [ ] `storage.ts`, `analytics.ts` (no-op in dev), `content.ts` and zod schemas
-- [ ] Deploy an empty shell to Vercel and confirm preview URLs work
+- [x] Scaffold Next.js + TypeScript + Tailwind with `output: 'export'`
+- [x] ESLint, Prettier, Vitest, Playwright, and a GitHub Actions CI workflow
+- [x] Design tokens, fonts, layout shell, nav, footer disclaimer
+- [x] `storage.ts`, `analytics.ts` (no-op in dev), `content.ts` and zod schemas
+- [ ] Deploy the shell to GitHub Pages (`.github/workflows/deploy-pages.yml`) *(needs Settings → Pages → Source: GitHub Actions, then a push to `main`)*
 
 ### Phase 1: Kamus + Kuis Sesat Pikir (about 1.5 days + content)
 *Mirrors the deck's Phase 1: quickest to build and the most viral.*
@@ -554,7 +556,7 @@ Estimates are focused hours for one developer. Content writing is counted separa
 - [ ] Copy-edit all Indonesian text (ideally by a second reader)
 
 ### Phase 5: Launch and Outreach (about 0.5 day)
-- [ ] Final production deploy, plus a custom domain (optional)
+- [ ] Final production deploy, plus a custom domain (optional; see [Action Items](#17-action-items-later))
 - [ ] Turn on analytics and confirm events fire
 - [ ] Record a 60–90s walkthrough video
 - [ ] Send the cold email (§12)
@@ -602,6 +604,11 @@ Append new entries; don't rewrite old ones.
 | 2026-10-01 | JSON + zod content layer behind `content.ts` | Demonstrates the "CMS-ready" claim without running a CMS | Real headless CMS now (overkill for a pitch) |
 | 2026-10-01 | Indonesian UI, English code and docs | Audience is Indonesian | Bilingual from day one |
 | 2026-10-01 | Commits are authored by the repo owner only; no AI co-author trailers | Owner's preference | — |
+| 2026-10-01 | Next.js 16 + Tailwind v4: tokens in CSS `@theme`, no `tailwind.config` | v4's default, CSS-first config | Tailwind v3 with a JS config |
+| 2026-10-01 | Self-hosted fonts via `@fontsource-variable` instead of `next/font/google` | Builds work offline and in CI with no Google Fonts fetch | `next/font/google` |
+| 2026-10-01 | `trailingSlash: true` and a zero-dependency `scripts/serve-static.mjs` | Static hosts resolve `/route/` to `index.html`; E2E tests run against the exact `out/` that ships | `next start` (not available with static export), `serve` package |
+| 2026-10-01 | Playwright pinned to 1.56 | Matches the Chromium preinstalled in Claude Code cloud sessions; CI installs its own browser | Latest Playwright |
+| 2026-10-01 | Host on **GitHub Pages** for now, with `BASE_PATH` support | Free, no extra account, deploys from `main` via Actions; moving later is cheap because the site is a plain static export | Vercel now (needs an account connection), Netlify, Cloudflare Pages |
 
 ---
 
@@ -621,7 +628,7 @@ Append new entries; don't rewrite old ones.
 
 ## 15. Open Questions
 
-- [ ] Final site name and domain: `masyarakat-baru.vercel.app`, or a custom domain?
+- [ ] Final site name and domain: `aliflazuardi.github.io/masyarakat-baru` for now; a custom domain later?
 - [ ] Should there be an English toggle (in case the founders want to show it to international partners)?
 - [ ] Which exact Malaka episodes to link for each tool? (Needs titles and URLs.)
 - [ ] How much of the builder's personal portfolio goes on `/tentang`?
@@ -636,3 +643,18 @@ Append new entries; don't rewrite old ones.
 - **Attribution:** commits are authored solely by the repo owner. **Do not add `Co-Authored-By` trailers or any other AI attribution lines** to commit messages or PR descriptions. (Enforced for Claude Code via `.claude/settings.json` and `CLAUDE.md`.)
 - **Keeping this plan current:** when a milestone lands, tick its box in the same PR. When scope or approach changes, add a row to the Decision Log.
 - **Definition of done (per feature):** acceptance criteria met, tests pass, works at 360px, keyboard accessible, content sourced, and the checkbox ticked here.
+
+---
+
+## 17. Action Items (later)
+
+Deferred work that isn't tied to a phase. Review this list before Phase 5 (launch and outreach).
+
+- [ ] **Move hosting off GitHub Pages** to Vercel, Netlify or Cloudflare Pages:
+  - Connect the repo on the new platform, with `npm run build` as the build command and `out/` as the output directory.
+  - Leave `BASE_PATH` unset (root domain), so URLs lose the `/masyarakat-baru/` prefix.
+  - Turn on preview deployments per PR, which are useful to link in the cold email.
+  - Delete `.github/workflows/deploy-pages.yml` and turn off Pages in repo settings.
+  - Update the share-text URL in §7.3 and any links in the README or outreach email.
+- [ ] Consider a custom domain (for example `masyarakatbaru.id`) before sending the cold email.
+

@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+/* Design tokens (BUILD_PLAN.md §6). Dark-first "ambient" theme from the pitch deck. */
+:root {
+  --bg: #16191d;
+  --surface: rgb(255 255 255 / 0.06);
+  --surface-strong: rgb(255 255 255 / 0.1);
+  --border: rgb(255 255 255 / 0.1);
+  --text: #f2f3f5;
+  --text-muted: #a3a9b3;
+  --accent-gold: #e8c547;
+  --accent-teal: #7fd3dc;
+  --accent-pink: #d26fa6;
+  --good: #5fd39a;
+  --bad: #f2777a;
+  --grid: rgb(255 255 255 / 0.04);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-muted: var(--text-muted);
+  --color-gold: var(--accent-gold);
+  --color-teal: var(--accent-teal);
+  --color-pink: var(--accent-pink);
+  --color-good: var(--good);
+  --color-bad: var(--bad);
+  --font-sans: "Plus Jakarta Sans Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+}
+
+body {
+  background-color: var(--bg);
+  /* Faint blueprint grid, as in the deck. */
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 48px 48px;
+  color: var(--text);
+  font-family: var(--font-sans);
+}
+
+/* Numbers: tabular figures so live readouts don't jitter. */
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
