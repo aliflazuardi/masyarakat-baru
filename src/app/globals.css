@@ -14,6 +14,9 @@
   --good: #5fd39a;
   --bad: #f2777a;
   --grid: rgb(255 255 255 / 0.04);
+  /* Chart marks: validated with the dataviz palette checker on --bg (CVD-safe diverging pair). */
+  --chart-up: #22a7b8;
+  --chart-down: #c97421;
   color-scheme: dark;
 }
 
@@ -29,6 +32,8 @@
   --color-pink: var(--accent-pink);
   --color-good: var(--good);
   --color-bad: var(--bad);
+  --color-chart-up: var(--chart-up);
+  --color-chart-down: var(--chart-down);
   --font-sans: "Plus Jakarta Sans Variable", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
 }
@@ -53,6 +58,17 @@ body {
 :focus-visible {
   outline: 2px solid var(--accent-gold);
   outline-offset: 2px;
+}
+
+/* Range sliders: large touch target, accent thumb. */
+input[type="range"] {
+  accent-color: var(--accent-teal);
+  height: 2.75rem;
+  cursor: pointer;
+}
+input[type="range"]:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 @media (prefers-reduced-motion: reduce) {
