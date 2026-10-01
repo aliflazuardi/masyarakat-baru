@@ -1,1 +1,242 @@
-[]
+[
+  {
+    "id": "q001",
+    "context": "Komentar warganet di video tentang APBN",
+    "statement": "Kalau kamu tidak setuju dengan anggaran ini, berarti kamu memang benci pendidikan.",
+    "options": ["ad-hominem", "false-dilemma", "valid"],
+    "answer": "false-dilemma",
+    "explanation": "Pernyataan ini hanya menyisakan dua pilihan: setuju dengan anggaran atau benci pendidikan. Padahal seseorang bisa peduli pendidikan sambil mengkritik cara anggarannya disusun."
+  },
+  {
+    "id": "q002",
+    "context": "Cuplikan debat publik soal layanan kesehatan",
+    "statement": "Kalau layanan kesehatan digratiskan, berikutnya semua orang minta rumah gratis dan ekonomi kita langsung runtuh.",
+    "options": ["slippery-slope", "post-hoc", "bandwagon"],
+    "answer": "slippery-slope",
+    "explanation": "Satu kebijakan dianggap pasti memicu rangkaian akibat ekstrem tanpa bukti di tiap langkahnya. Waspadai kata-kata seperti \"berikutnya pasti\" atau \"ujung-ujungnya\"."
+  },
+  {
+    "id": "q003",
+    "context": "Balasan komentar di utas tentang reformasi pajak",
+    "statement": "Ngapain dengar pendapatnya soal pajak? Dia saja belum pernah punya usaha sendiri.",
+    "options": ["appeal-to-authority", "straw-man", "ad-hominem"],
+    "answer": "ad-hominem",
+    "explanation": "Yang diserang adalah latar belakang orangnya, bukan isi argumennya tentang pajak. Argumen yang baik tetap bisa datang dari siapa saja, jadi nilailah isinya."
+  },
+  {
+    "id": "q004",
+    "context": "Diskusi di grup WhatsApp keluarga",
+    "statement": "Video itu sudah ditonton jutaan orang dan hampir semua komentarnya setuju. Jadi isinya pasti benar.",
+    "options": ["bandwagon", "cherry-picking", "valid"],
+    "answer": "bandwagon",
+    "explanation": "Jumlah penonton dan komentar yang setuju bukan bukti kebenaran. Popularitas sebuah klaim harus dipisahkan dari bukti yang mendukungnya."
+  },
+  {
+    "id": "q005",
+    "context": "Tanggapan juru bicara dalam konferensi pers",
+    "statement": "Kenapa kalian ribut soal sungai yang tercemar di daerah ini? Negara tetangga sungainya jauh lebih kotor.",
+    "options": ["red-herring", "whataboutism", "hasty-generalization"],
+    "answer": "whataboutism",
+    "explanation": "Kritik tidak dijawab, melainkan ditangkis dengan menunjuk kesalahan pihak lain. Masalah di tempat lain tidak membuat masalah di sini hilang."
+  },
+  {
+    "id": "q006",
+    "context": "Komentar di unggahan berita ekonomi",
+    "statement": "Inflasi tahunan naik dari 2% menjadi 4%, jadi daya beli uang yang sama tahun ini lebih rendah dibanding tahun lalu.",
+    "options": ["post-hoc", "valid", "slippery-slope"],
+    "answer": "valid",
+    "explanation": "Ini argumen yang sah: inflasi memang berarti harga rata-rata naik, sehingga uang dengan jumlah sama membeli lebih sedikit. Kesimpulannya mengikuti langsung dari premisnya."
+  },
+  {
+    "id": "q007",
+    "context": "Debat di kolom komentar soal anggaran rapat dinas",
+    "statement": "A: \"Anggaran rapat dinas sebaiknya dipangkas.\" B: \"Oh, jadi kamu mau pegawai negeri tidak boleh bekerja sama sekali?\"",
+    "options": ["straw-man", "loaded-question", "tu-quoque"],
+    "answer": "straw-man",
+    "explanation": "B memelintir usulan memangkas anggaran rapat menjadi \"melarang pegawai bekerja\", lalu menyerang versi palsu itu. Tanyakan: apakah itu benar-benar yang dikatakan A?"
+  },
+  {
+    "id": "q008",
+    "context": "Unggahan viral di media sosial",
+    "statement": "Sejak aplikasi transportasi itu diluncurkan, angka pengangguran di kota ini naik. Jelas aplikasi itu penyebabnya.",
+    "options": ["cherry-picking", "anecdotal-evidence", "post-hoc"],
+    "answer": "post-hoc",
+    "explanation": "Dua hal yang terjadi berurutan belum tentu punya hubungan sebab-akibat. Bisa jadi ada faktor lain yang berubah di periode yang sama."
+  },
+  {
+    "id": "q009",
+    "context": "Balasan terhadap kritik di forum diskusi",
+    "statement": "Kamu mengkritik pejabat yang boros, padahal kamu sendiri suka belanja barang mahal.",
+    "options": ["tu-quoque", "whataboutism", "ad-hominem"],
+    "answer": "tu-quoque",
+    "explanation": "Kritik ditolak dengan menuduh pengkritiknya juga melakukan hal serupa. Kalaupun si pengkritik tidak konsisten, kritiknya terhadap pemborosan anggaran tetap bisa benar."
+  },
+  {
+    "id": "q010",
+    "context": "Iklan suplemen di media sosial",
+    "statement": "Seorang artis terkenal bilang suplemen ini bisa menyembuhkan diabetes, jadi pasti manjur.",
+    "options": ["bandwagon", "appeal-to-authority", "valid"],
+    "answer": "appeal-to-authority",
+    "explanation": "Ketenaran seseorang tidak menjadikannya ahli kesehatan. Klaim medis perlu bukti dari penelitian, bukan dari popularitas yang mengucapkannya."
+  },
+  {
+    "id": "q011",
+    "context": "Pertanyaan pewawancara dalam talkshow",
+    "statement": "Sejak kapan Anda berhenti menyalahgunakan dana bantuan desa?",
+    "options": ["burden-of-proof", "red-herring", "loaded-question"],
+    "answer": "loaded-question",
+    "explanation": "Pertanyaan ini menyelipkan tuduhan bahwa dana pernah disalahgunakan, sehingga jawaban apa pun terdengar seperti pengakuan. Tolak asumsinya sebelum menjawab."
+  },
+  {
+    "id": "q012",
+    "context": "Komentar di video tentang pasar kerja",
+    "statement": "Dua temanku lulusan kampus itu susah dapat kerja. Berarti semua lulusan kampus itu memang tidak kompeten.",
+    "options": ["hasty-generalization", "no-true-scotsman", "post-hoc"],
+    "answer": "hasty-generalization",
+    "explanation": "Dua contoh terlalu sedikit untuk menyimpulkan sesuatu tentang ribuan lulusan. Tanyakan selalu: berapa besar sampelnya, dan apakah mewakili?"
+  },
+  {
+    "id": "q013",
+    "context": "Jawaban di sesi tanya jawab",
+    "statement": "Kebijakan ini tepat karena merupakan keputusan yang benar.",
+    "options": ["appeal-to-authority", "circular-reasoning", "valid"],
+    "answer": "circular-reasoning",
+    "explanation": "\"Tepat\" dan \"benar\" berarti hal yang sama, jadi kesimpulannya hanya diulang sebagai alasan. Argumen yang baik butuh alasan yang berdiri sendiri."
+  },
+  {
+    "id": "q014",
+    "context": "Utas diskusi tentang transportasi umum",
+    "statement": "Jalur bus baru ini memangkas waktu tempuh rata-rata dari 70 menjadi 45 menit menurut data dinas perhubungan, jadi layanan ini membantu penglaju menghemat waktu.",
+    "options": ["valid", "cherry-picking", "appeal-to-authority"],
+    "answer": "valid",
+    "explanation": "Kesimpulannya didukung data yang relevan dan bersumber jelas. Ini contoh argumen yang sehat, walau tetap boleh ditanya bagaimana datanya dikumpulkan."
+  },
+  {
+    "id": "q015",
+    "context": "Komentar di unggahan kampanye kesehatan",
+    "statement": "Kakekku merokok sejak muda dan sehat sampai umur 90. Jadi rokok itu tidak berbahaya.",
+    "options": ["anecdotal-evidence", "hasty-generalization", "valid"],
+    "answer": "anecdotal-evidence",
+    "explanation": "Satu cerita pribadi dipakai untuk membantah data dari jutaan orang. Pengalaman individu bisa nyata, tapi bukan bukti yang cukup untuk kesimpulan umum."
+  },
+  {
+    "id": "q016",
+    "context": "Cuitan tentang harga pangan",
+    "statement": "Harga beras bulan ini turun dibanding bulan lalu. Jelas harga pangan sepanjang tahun ini makin murah.",
+    "options": ["post-hoc", "slippery-slope", "cherry-picking"],
+    "answer": "cherry-picking",
+    "explanation": "Hanya satu komoditas di satu bulan yang ditampilkan untuk menyimpulkan tren setahun penuh. Mintalah gambaran lengkap: tren tahunan dan komoditas lainnya."
+  },
+  {
+    "id": "q017",
+    "context": "Perdebatan di forum komunitas lingkungan",
+    "statement": "Aktivis lingkungan sejati tidak pernah naik pesawat. Kalau dia naik pesawat, berarti dia bukan aktivis sejati.",
+    "options": ["no-true-scotsman", "ad-hominem", "circular-reasoning"],
+    "answer": "no-true-scotsman",
+    "explanation": "Definisi \"aktivis sejati\" diubah sepihak supaya klaimnya tidak bisa dibantah. Perhatikan kata \"sejati\" atau \"asli\" yang muncul tiba-tiba setelah ada contoh tandingan."
+  },
+  {
+    "id": "q018",
+    "context": "Komentar di berita tentang dana publik",
+    "statement": "Dana itu pasti dikorupsi. Kalau tidak percaya, coba buktikan bahwa dana itu tidak dikorupsi!",
+    "options": ["loaded-question", "burden-of-proof", "bandwagon"],
+    "answer": "burden-of-proof",
+    "explanation": "Yang membuat klaim justru menuntut orang lain membuktikan kebalikannya. Beban pembuktian ada pada pihak yang menuduh."
+  },
+  {
+    "id": "q019",
+    "context": "Tanggapan pejabat saat ditanya wartawan",
+    "statement": "Ditanya soal proyek jalan yang terlambat dua tahun, ia menjawab: \"Yang penting, lihat betapa ramainya wisatawan kita tahun ini!\"",
+    "options": ["whataboutism", "red-herring", "straw-man"],
+    "answer": "red-herring",
+    "explanation": "Topik pariwisata dimunculkan untuk mengalihkan perhatian dari pertanyaan soal keterlambatan proyek. Tarik kembali ke pertanyaan awal yang belum dijawab."
+  },
+  {
+    "id": "q020",
+    "context": "Pesan berantai di media sosial",
+    "statement": "Kalau kamu tidak membagikan pesan ini, bayangkan anak-anak yang akan menderita karena kamu diam saja.",
+    "options": ["appeal-to-emotion", "false-dilemma", "loaded-question"],
+    "answer": "appeal-to-emotion",
+    "explanation": "Rasa bersalah dipakai untuk mendorong tindakan, tanpa bukti bahwa membagikan pesan itu menolong siapa pun. Akui emosinya, lalu tanyakan buktinya."
+  },
+  {
+    "id": "q021",
+    "context": "Diskusi tentang data kependudukan",
+    "statement": "Menurut sensus, jumlah penduduk lansia terus bertambah. Jadi kebutuhan layanan kesehatan untuk lansia kemungkinan besar juga meningkat.",
+    "options": ["slippery-slope", "hasty-generalization", "valid"],
+    "answer": "valid",
+    "explanation": "Kesimpulannya masuk akal dan dinyatakan dengan hati-hati (\"kemungkinan besar\"), didukung data sensus yang relevan. Argumen yang baik sering memakai bahasa yang terukur seperti ini."
+  },
+  {
+    "id": "q022",
+    "context": "Komentar di video debat kebijakan",
+    "statement": "Semua orang di kantorku bilang kebijakan itu gagal. Masa kamu masih membelanya?",
+    "options": ["bandwagon", "ad-hominem", "anecdotal-evidence"],
+    "answer": "bandwagon",
+    "explanation": "Pendapat banyak orang di satu kantor dijadikan alasan, bukan bukti tentang hasil kebijakan. Tanyakan data apa yang menunjukkan kebijakan itu gagal."
+  },
+  {
+    "id": "q023",
+    "context": "Balasan di utas tentang subsidi energi",
+    "statement": "A: \"Subsidi energi perlu lebih tepat sasaran.\" B: \"Jadi kamu tega membiarkan rakyat kecil kelaparan?\"",
+    "options": ["appeal-to-emotion", "straw-man", "tu-quoque"],
+    "answer": "straw-man",
+    "explanation": "Usulan agar subsidi lebih tepat sasaran dipelintir menjadi \"membiarkan rakyat kelaparan\". Bandingkan selalu tanggapan dengan pernyataan aslinya."
+  },
+  {
+    "id": "q024",
+    "context": "Diskusi tentang kebiasaan membaca",
+    "statement": "Penelitian dengan ribuan responden di banyak provinsi menunjukkan pola yang sama, jadi temuan itu cukup kuat untuk dijadikan bahan diskusi kebijakan.",
+    "options": ["valid", "appeal-to-authority", "bandwagon"],
+    "answer": "valid",
+    "explanation": "Sampel yang besar dan beragam memang membuat temuan lebih bisa dipercaya. Kesimpulannya juga wajar: dijadikan bahan diskusi, bukan kebenaran mutlak."
+  },
+  {
+    "id": "q025",
+    "context": "Komentar warganet tentang anggaran daerah",
+    "statement": "Pilih saja: dana dipakai untuk membangun jalan, atau rakyat dibiarkan hidup tanpa akses sama sekali.",
+    "options": ["false-dilemma", "slippery-slope", "appeal-to-emotion"],
+    "answer": "false-dilemma",
+    "explanation": "Hanya dua pilihan ekstrem yang disajikan, padahal ada banyak cara lain membagi dan memakai anggaran. Carilah pilihan ketiga yang disembunyikan."
+  },
+  {
+    "id": "q026",
+    "context": "Balasan di forum diskusi ekonomi",
+    "statement": "Ekonom itu lulusan luar negeri, jadi pendapatnya pasti tidak paham kondisi rakyat Indonesia.",
+    "options": ["hasty-generalization", "ad-hominem", "no-true-scotsman"],
+    "answer": "ad-hominem",
+    "explanation": "Argumen ditolak karena latar belakang pendidikan orangnya, bukan karena isinya keliru. Tanyakan: bagian mana dari analisisnya yang salah?"
+  },
+  {
+    "id": "q027",
+    "context": "Utas tentang keamanan pangan",
+    "statement": "BPOM menarik produk itu setelah uji laboratorium menemukan kandungan berbahaya, jadi sebaiknya kita berhenti mengonsumsinya sampai ada informasi baru.",
+    "options": ["appeal-to-authority", "valid", "appeal-to-emotion"],
+    "answer": "valid",
+    "explanation": "Merujuk lembaga berwenang yang memang ahli di bidangnya, disertai bukti uji laboratorium, adalah penalaran yang wajar. Seruan otoritas jadi keliru hanya jika otoritasnya tidak relevan atau tanpa bukti."
+  },
+  {
+    "id": "q028",
+    "context": "Komentar di unggahan statistik kriminalitas",
+    "statement": "Setelah lampu jalan dipasang, pencurian di kampung kami turun. Pasti karena lampunya, tidak mungkin ada faktor lain.",
+    "options": ["post-hoc", "cherry-picking", "valid"],
+    "answer": "post-hoc",
+    "explanation": "Lampu jalan mungkin memang membantu, tapi menolak kemungkinan faktor lain sama sekali adalah lompatan logika. Urutan waktu saja tidak cukup untuk membuktikan sebab-akibat."
+  },
+  {
+    "id": "q029",
+    "context": "Tanggapan di kolom komentar soal kritik terhadap media",
+    "statement": "Kenapa cuma media ini yang dikritik soal judul clickbait? Media lain juga begitu, kok.",
+    "options": ["tu-quoque", "whataboutism", "red-herring"],
+    "answer": "whataboutism",
+    "explanation": "Kritik dialihkan ke pihak lain alih-alih dijawab. Kalau media lain juga melakukannya, itu masalah tambahan, bukan pembelaan."
+  },
+  {
+    "id": "q030",
+    "context": "Wawancara di acara bincang-bincang",
+    "statement": "Apakah Anda masih mendukung kebijakan gagal yang menyengsarakan rakyat itu?",
+    "options": ["loaded-question", "false-dilemma", "circular-reasoning"],
+    "answer": "loaded-question",
+    "explanation": "Pertanyaannya sudah menyelipkan penilaian bahwa kebijakannya \"gagal\" dan \"menyengsarakan\". Menjawab ya atau tidak sama-sama terjebak, jadi bahas dulu asumsinya."
+  }
+]

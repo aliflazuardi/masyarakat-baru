@@ -1,1 +1,200 @@
-[]
+[
+  {
+    "slug": "ad-hominem",
+    "nameId": "Serangan Pribadi",
+    "nameEn": "Ad Hominem",
+    "aliases": ["argumentum ad hominem", "menyerang orangnya"],
+    "category": "serangan-personal",
+    "definition": "Menolak sebuah argumen dengan menyerang pribadi, latar belakang, atau penampilan orang yang menyampaikannya, bukan isi argumennya.",
+    "example": "\"Jangan dengarkan analisisnya soal pajak, dia saja belum pernah punya usaha sendiri.\"",
+    "counter": "Kembalikan fokus ke isi: \"Terlepas dari siapa yang bicara, bagian mana dari argumennya yang menurutmu keliru, dan kenapa?\"",
+    "related": ["tu-quoque", "straw-man"]
+  },
+  {
+    "slug": "tu-quoque",
+    "nameId": "Kamu Juga!",
+    "nameEn": "Tu Quoque",
+    "aliases": ["appeal to hypocrisy", "sindiran munafik"],
+    "category": "serangan-personal",
+    "definition": "Menolak kritik dengan menunjukkan bahwa si pengkritik juga melakukan hal yang sama, seolah-olah itu membuat kritiknya salah.",
+    "example": "\"Kamu mengkritik pejabat yang boros, padahal kamu sendiri suka belanja barang mahal.\"",
+    "counter": "Akui bahwa konsistensi itu penting, lalu pisahkan: \"Mungkin saya juga salah, tapi apakah kritiknya sendiri benar atau tidak?\"",
+    "related": ["ad-hominem", "whataboutism"]
+  },
+  {
+    "slug": "straw-man",
+    "nameId": "Orang-orangan Sawah",
+    "nameEn": "Straw Man",
+    "aliases": ["manusia jerami", "memelintir argumen"],
+    "category": "pengalihan",
+    "definition": "Memelintir atau melebih-lebihkan pendapat lawan menjadi versi yang lebih lemah, lalu menyerang versi palsu tersebut.",
+    "example": "A: \"Anggaran rapat dinas sebaiknya dipangkas.\" B: \"Jadi kamu mau pegawai negeri tidak boleh bekerja sama sekali?\"",
+    "counter": "Ulangi pendapat aslimu dengan tenang: \"Bukan itu yang saya katakan. Maksud saya adalah …\"",
+    "related": ["red-herring", "slippery-slope"]
+  },
+  {
+    "slug": "red-herring",
+    "nameId": "Pengalihan Isu",
+    "nameEn": "Red Herring",
+    "aliases": ["mengalihkan topik", "ikan haring merah"],
+    "category": "pengalihan",
+    "definition": "Memasukkan topik lain yang tidak relevan untuk menjauhkan diskusi dari pertanyaan yang sebenarnya.",
+    "example": "Ditanya soal keterlambatan proyek jalan, seorang juru bicara menjawab, \"Yang penting, lihat betapa ramainya pariwisata kita tahun ini!\"",
+    "counter": "Tarik kembali ke pokok soal: \"Itu topik yang menarik, tapi pertanyaannya tadi adalah …\"",
+    "related": ["whataboutism", "straw-man"]
+  },
+  {
+    "slug": "whataboutism",
+    "nameId": "Whataboutisme",
+    "nameEn": "Whataboutism",
+    "aliases": ["bagaimana dengan", "lalu bagaimana dengan yang lain"],
+    "category": "pengalihan",
+    "definition": "Menangkis kritik dengan menunjuk kesalahan pihak lain (\"lalu bagaimana dengan …?\"), alih-alih menjawab kritik itu sendiri.",
+    "example": "\"Kenapa ribut soal sungai yang tercemar di sini? Negara tetangga juga sungainya kotor.\"",
+    "counter": "Akui bahwa masalah lain itu bisa dibahas terpisah: \"Bisa jadi itu juga masalah, tapi apakah kritik ini benar?\"",
+    "related": ["tu-quoque", "red-herring"]
+  },
+  {
+    "slug": "appeal-to-emotion",
+    "nameId": "Seruan Emosi",
+    "nameEn": "Appeal to Emotion",
+    "aliases": ["argumentum ad passiones", "main perasaan"],
+    "category": "manipulasi-emosi",
+    "definition": "Memakai rasa takut, kasihan, marah, atau bangga untuk memenangkan argumen, sebagai pengganti bukti dan alasan.",
+    "example": "\"Kalau kamu tidak setuju dengan kebijakan ini, bayangkan wajah anak-anak yang akan menangis karena kamu.\"",
+    "counter": "Akui emosinya, lalu minta datanya: \"Ini memang menyentuh, tapi apa bukti bahwa kebijakan ini akan membantu?\"",
+    "related": ["bandwagon", "slippery-slope"]
+  },
+  {
+    "slug": "bandwagon",
+    "nameId": "Ikut-ikutan",
+    "nameEn": "Bandwagon",
+    "aliases": ["argumentum ad populum", "kata orang banyak", "viral pasti benar"],
+    "category": "manipulasi-emosi",
+    "definition": "Menganggap sesuatu benar atau baik hanya karena banyak orang memercayainya atau melakukannya.",
+    "example": "\"Video itu sudah ditonton jutaan orang dan semua yang komen setuju, jadi isinya pasti benar.\"",
+    "counter": "Pisahkan popularitas dari kebenaran: \"Banyak yang percaya bukan bukti. Apa sumber atau datanya?\"",
+    "related": ["appeal-to-authority", "appeal-to-emotion"]
+  },
+  {
+    "slug": "appeal-to-authority",
+    "nameId": "Seruan Otoritas",
+    "nameEn": "Appeal to Authority",
+    "aliases": ["argumentum ad verecundiam", "kata tokoh"],
+    "category": "manipulasi-emosi",
+    "definition": "Menganggap sebuah klaim pasti benar karena diucapkan orang terkenal atau berjabatan, terutama jika ia bukan ahli di bidang itu.",
+    "example": "\"Seorang artis terkenal bilang suplemen ini bisa menyembuhkan diabetes, jadi pasti manjur.\"",
+    "counter": "Tanyakan relevansi dan buktinya: \"Apakah beliau ahli di bidang ini, dan apa kata penelitiannya?\"",
+    "related": ["bandwagon", "anecdotal-evidence"]
+  },
+  {
+    "slug": "loaded-question",
+    "nameId": "Pertanyaan Menjebak",
+    "nameEn": "Loaded Question",
+    "aliases": ["pertanyaan bermuatan", "complex question"],
+    "category": "manipulasi-emosi",
+    "definition": "Mengajukan pertanyaan yang sudah menyelipkan tuduhan atau asumsi, sehingga jawaban apa pun terdengar seperti pengakuan.",
+    "example": "\"Sejak kapan Anda berhenti menyalahgunakan dana bantuan desa?\"",
+    "counter": "Tolak asumsinya, bukan pertanyaannya: \"Pertanyaan itu mengandaikan saya pernah menyalahgunakan dana. Apa dasarnya?\"",
+    "related": ["false-dilemma", "burden-of-proof"]
+  },
+  {
+    "slug": "slippery-slope",
+    "nameId": "Lereng Licin",
+    "nameEn": "Slippery Slope",
+    "aliases": ["efek domino", "nanti ujung-ujungnya"],
+    "category": "logika-keliru",
+    "definition": "Mengklaim satu langkah kecil pasti memicu rangkaian akibat ekstrem, tanpa menunjukkan bukti tiap langkahnya.",
+    "example": "\"Kalau layanan kesehatan digratiskan, nanti semua orang minta rumah gratis dan ekonomi langsung runtuh.\"",
+    "counter": "Minta bukti tiap mata rantai: \"Bagaimana persisnya langkah A menyebabkan B, lalu C?\"",
+    "related": ["appeal-to-emotion", "false-dilemma"]
+  },
+  {
+    "slug": "false-dilemma",
+    "nameId": "Dilema Palsu",
+    "nameEn": "False Dilemma",
+    "aliases": ["hitam-putih", "false dichotomy", "pilihan palsu"],
+    "category": "logika-keliru",
+    "definition": "Menyajikan hanya dua pilihan seolah-olah itu satu-satunya kemungkinan, padahal ada pilihan lain.",
+    "example": "\"Kalau kamu tidak setuju dengan anggaran ini, berarti kamu benci pendidikan.\"",
+    "counter": "Tunjukkan pilihan ketiga: \"Saya bisa mendukung pendidikan dan tetap mengkritik cara anggarannya disusun.\"",
+    "related": ["slippery-slope", "loaded-question"]
+  },
+  {
+    "slug": "hasty-generalization",
+    "nameId": "Generalisasi Tergesa-gesa",
+    "nameEn": "Hasty Generalization",
+    "aliases": ["pukul rata", "overgeneralization"],
+    "category": "logika-keliru",
+    "definition": "Menarik kesimpulan umum tentang sebuah kelompok besar dari contoh yang terlalu sedikit atau tidak mewakili.",
+    "example": "\"Dua temanku lulusan kampus itu sulit dapat kerja, berarti semua lulusannya tidak kompeten.\"",
+    "counter": "Tanyakan ukuran dan keterwakilan sampelnya: \"Berapa banyak contoh yang kamu lihat, dan apakah mewakili semuanya?\"",
+    "related": ["anecdotal-evidence", "cherry-picking"]
+  },
+  {
+    "slug": "anecdotal-evidence",
+    "nameId": "Bukti Anekdot",
+    "nameEn": "Anecdotal Evidence",
+    "aliases": ["katanya tetangga", "pengalaman pribadi"],
+    "category": "logika-keliru",
+    "definition": "Memakai cerita atau pengalaman pribadi sebagai bukti utama, sambil mengabaikan data yang lebih luas.",
+    "example": "\"Kakekku merokok sejak muda dan sehat sampai umur 90, jadi rokok tidak berbahaya.\"",
+    "counter": "Hargai ceritanya, lalu bandingkan dengan data: \"Itu satu kasus. Apa kata data dari ribuan orang?\"",
+    "related": ["hasty-generalization", "cherry-picking"]
+  },
+  {
+    "slug": "cherry-picking",
+    "nameId": "Comot Data",
+    "nameEn": "Cherry Picking",
+    "aliases": ["memilih data", "suppressed evidence"],
+    "category": "logika-keliru",
+    "definition": "Hanya menampilkan data yang mendukung pendapat sendiri, sambil menyembunyikan data yang bertentangan.",
+    "example": "\"Harga beras bulan ini turun dibanding bulan lalu, jadi harga pangan sepanjang tahun ini jelas makin murah.\"",
+    "counter": "Minta gambaran lengkapnya: \"Bagaimana tren selama setahun, dan untuk komoditas lain?\"",
+    "related": ["hasty-generalization", "anecdotal-evidence"]
+  },
+  {
+    "slug": "post-hoc",
+    "nameId": "Sebab-Akibat Palsu",
+    "nameEn": "Post Hoc Ergo Propter Hoc",
+    "aliases": ["post hoc", "false cause", "kebetulan dianggap sebab"],
+    "category": "logika-keliru",
+    "definition": "Menganggap karena B terjadi setelah A, maka A pasti penyebab B.",
+    "example": "\"Sejak aplikasi itu diluncurkan, angka pengangguran naik. Jelas aplikasi itu penyebabnya.\"",
+    "counter": "Cari penjelasan lain: \"Apa saja yang juga berubah di periode itu? Apakah ada bukti hubungan sebab-akibatnya?\"",
+    "related": ["hasty-generalization", "cherry-picking"]
+  },
+  {
+    "slug": "circular-reasoning",
+    "nameId": "Penalaran Melingkar",
+    "nameEn": "Circular Reasoning",
+    "aliases": ["begging the question", "petitio principii", "muter-muter"],
+    "category": "logika-keliru",
+    "definition": "Menggunakan kesimpulan sebagai alasan untuk membuktikan kesimpulan itu sendiri.",
+    "example": "\"Kebijakan ini tepat karena merupakan keputusan yang benar.\"",
+    "counter": "Minta alasan yang berdiri sendiri: \"Apa bukti dari luar pernyataan itu yang menunjukkan kebijakannya tepat?\"",
+    "related": ["burden-of-proof", "appeal-to-authority"]
+  },
+  {
+    "slug": "no-true-scotsman",
+    "nameId": "Bukan yang Sejati",
+    "nameEn": "No True Scotsman",
+    "aliases": ["bukan yang asli", "memindahkan definisi"],
+    "category": "logika-keliru",
+    "definition": "Menyelamatkan klaim umum dari contoh tandingan dengan mengubah definisinya secara sepihak.",
+    "example": "\"Aktivis lingkungan sejati tidak pernah naik pesawat. Kalau dia naik pesawat, berarti dia bukan aktivis sejati.\"",
+    "counter": "Tunjukkan bahwa definisinya digeser: \"Definisinya baru diubah setelah ada contoh yang tidak cocok.\"",
+    "related": ["circular-reasoning", "hasty-generalization"]
+  },
+  {
+    "slug": "burden-of-proof",
+    "nameId": "Lempar Beban Pembuktian",
+    "nameEn": "Burden of Proof",
+    "aliases": ["shifting the burden of proof", "buktikan kalau salah"],
+    "category": "logika-keliru",
+    "definition": "Membuat klaim lalu menuntut orang lain membuktikan bahwa klaim itu salah, padahal yang membuat klaim yang wajib membuktikannya.",
+    "example": "\"Dana itu pasti dikorupsi. Kalau tidak percaya, coba buktikan bahwa tidak dikorupsi!\"",
+    "counter": "Kembalikan bebannya: \"Kamu yang membuat klaim, jadi kamu yang perlu menunjukkan buktinya.\"",
+    "related": ["loaded-question", "circular-reasoning"]
+  }
+]
