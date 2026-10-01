@@ -104,7 +104,7 @@ Login, comments, leaderboards, server-side storage, real donation processing.
 | Framework | **Next.js (App Router) with `output: 'export'`** | Matches the stack pitched in the deck, so the prototype *is* the proposed architecture. Static export means free hosting and no server. |
 | Language | TypeScript (strict) | Typed content schemas, so calculator and engine bugs show up at compile time. |
 | Styling | Tailwind CSS v4 | Fast iteration; design tokens live in `src/app/globals.css` (`@theme`). |
-| Charts | Recharts | Declarative React charts, responsive, good enough for bar, line and donut charts. |
+| Charts | Plain HTML/CSS bars and meters | The calculator only needs ranked bars, a diverging delta and limit meters; no chart library keeps JS small (see Decision Log). |
 | Content validation | zod | Validate every JSON content file in tests. This is the seam where a CMS plugs in later. |
 | Search | Plain normalised `includes`, with Fuse.js only if needed | Fewer than 30 fallacies does not need a search library. |
 | Persistence | `localStorage`, wrapped in try/catch | Streaks, quiz history and simulator progress. No backend. |
@@ -528,13 +528,13 @@ Estimates are focused hours for one developer. Content writing is counted separa
 
 ### Phase 2: Bahasa Bayi Calculator (about 3 days + data gathering)
 *Mirrors the deck's Phase 2: needs data modelling.*
-- [ ] Gather and source all figures (checklist in §7.2), and fill in `budget.json` and `assumptions.json`
-- [ ] `perCapita.ts`, `tax.ts` and `reallocation.ts`, with unit tests
-- [ ] Tab 1: big number translator with analogies
-- [ ] Tab 2: "Ke Mana Pajakmu?", with demographic toggles and a donut chart
-- [ ] Tab 3: "Jadi Menkeu Sehari", with sliders, deficit meter, indicator cards and before/after chart
-- [ ] "Bagaimana kami menghitung?" drawer
-- [ ] URL-encoded shareable scenarios
+- [x] Gather and source all figures (checklist in §7.2), and fill in `budget.json` and `assumptions.json` *(19 items still need a human check: `npm run data:review` → `docs/DATA_REVIEW.md`)*
+- [x] `perCapita.ts`, `tax.ts` and `reallocation.ts`, with unit tests
+- [x] Tab 1: big number translator with analogies
+- [x] Tab 2: "Ke Mana Pajakmu?", with demographic toggles and a ranked bar list (replaces the donut; see Decision Log)
+- [x] Tab 3: "Jadi Menkeu Sehari", with sliders, deficit meter, indicator cards and before/after chart
+- [x] "Bagaimana kami menghitung?" drawer
+- [x] URL-encoded shareable scenarios
 
 ### Phase 3: Impact Simulator (about 3 days + writing)
 *Mirrors the deck's Phase 3: narrative- and design-intensive.*
@@ -613,6 +613,10 @@ Append new entries; don't rewrite old ones.
 | 2026-10-01 | Daily set is chosen per "cycle": the pool is shuffled once every `floor(pool / 3)` days and sliced day by day | Guarantees no repeats within a cycle while staying deterministic and backend-free | Independent random pick per day (can repeat) |
 | 2026-10-01 | Quiz progress is saved after every answer, and a finished set can't be replayed | A reload resumes mid-set, and the streak and score can't be farmed | Only save on completion |
 | 2026-10-01 | Quiz and streak UI render only after hydration (`useHydrated`) | They depend on the client clock and localStorage; avoids hydration mismatches | Render with a server-side date |
+| 2026-10-01 | Calculator sliders use 14 **non-overlapping** categories: the 11 spending functions (fungsi) plus transfers to regions, with debt interest split from pelayanan umum and energy subsidy split from ekonomi | They sum exactly to Rp3.842,7 T, so moving money is honest; "priority" budgets (education 20%, MBG, health) overlap across functions and are only used for presets and the 20% check | Priority budgets as sliders (double counting) |
+| 2026-10-01 | Revenue is fixed in "Jadi Menkeu Sehari"; only spending moves. Indirect effects are shown as a level (rendah/sedang/tinggi), never a forecast | Keeps the model explainable and avoids implying precision we don't have | Elasticity-based inflation or income estimates |
+| 2026-10-01 | No chart library: ranked HTML bars (one hue), a validated teal/orange diverging pair for deltas, and limit meters with icon + text | 14 categories is too many for a donut; HTML bars are accessible, direct-labelled and add no JS. Colours checked with the dataviz palette validator (CVD-safe on the dark surface) | Recharts donut and bar charts |
+| 2026-10-01 | `Figure` gains `kind` (official/derived/estimate) and `needsReview`; `tax.json` and `provinces.json` added; `npm run data:review` generates `docs/DATA_REVIEW.md` | Makes data provenance explicit and gives a repeatable sign-off checklist | Free-text notes only |
 
 ---
 
@@ -661,4 +665,6 @@ Deferred work that isn't tied to a phase. Review this list before Phase 5 (launc
   - Delete `.github/workflows/deploy-pages.yml` and turn off Pages in repo settings.
   - Update the share-text URL in §7.3 and any links in the README or outreach email.
 - [ ] Consider a custom domain (for example `masyarakatbaru.id`) before sending the cold email.
+- [ ] **Clear the calculator data review** (`npm run data:review`): verify each flagged figure against the UU APBN 2026 / Nota Keuangan, BPS and PMK documents, then remove `needsReview`.
+- [ ] Expand `provinces.json` from 5 provinces to all 38 (UMP 2026), each with an official source.
 

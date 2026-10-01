@@ -47,15 +47,80 @@ export const QuizItem = z
 
 // ---------- Figures (budget and assumptions for the calculator) ----------
 
-export const Figure = z.object({
-  key: z.string().min(1),
-  label: z.string().min(1),
-  value: z.number(),
-  unit: z.enum(["IDR", "persen", "orang", "rasio", "IDR/tahun", "IDR/bulan"]),
-  year: z.number().int().min(2000),
-  source: z.string().min(1),
+/**
+ * How a figure was obtained:
+ * - official: published by a government body or in law (must link to a source)
+ * - derived: calculated from official figures (the note says how)
+ * - estimate: a modelling assumption or rough market price, shown as adjustable
+ */
+export const FigureKind = z.enum(["official", "derived", "estimate"]);
+
+export const Figure = z
+  .object({
+    key: z.string().min(1),
+    label: z.string().min(1),
+    value: z.number(),
+    unit: z.enum([
+      "IDR",
+      "IDR_T", // triliun rupiah
+      "persen",
+      "orang",
+      "rasio",
+      "liter",
+      "kg",
+    ]),
+    year: z.number().int().min(2000),
+    kind: FigureKind,
+    /** Grouping used by the calculator, e.g. "alokasi" for the reallocation sliders. */
+    group: z.string().optional(),
+    source: z.string().min(1),
+    sourceUrl: z.url().optional(),
+    note: z.string().optional(),
+    /** True until a human has checked the value against the primary document. */
+    needsReview: z.boolean().optional(),
+  })
+  .refine((f) => f.kind !== "official" || f.sourceUrl, {
+    message: "official figures must have a sourceUrl",
+  })
+  .refine((f) => f.kind === "official" || f.note, {
+    message: "derived and estimated figures must explain themselves in a note",
+  });
+
+// ---------- Tax rules (calculator) ----------
+
+export const TaxRules = z.object({
+  year: z.number().int(),
+  pph21: z.object({
+    /** Progressive brackets on taxable income (PKP), ascending. `upTo: null` is the top bracket. */
+    brackets: z
+      .array(z.object({ upTo: z.number().nullable(), rate: z.number().gt(0).lt(1) }))
+      .min(1),
+    ptkp: z.object({
+      self: z.number(),
+      married: z.number(),
+      perDependent: z.number(),
+      maxDependents: z.number().int(),
+    }),
+    biayaJabatan: z.object({ rate: z.number(), maxPerYear: z.number() }),
+    /** PKP is rounded down to this multiple before applying rates. */
+    pkpRounding: z.number().int(),
+  }),
+  ppn: z.object({
+    /** Effective VAT on most (non-luxury) goods and services. */
+    effectiveRate: z.number().gt(0).lt(1),
+  }),
+  sources: z.array(z.object({ label: z.string(), url: z.url() })).min(1),
+  needsReview: z.boolean().optional(),
+});
+
+export const Province = z.object({
+  key: z.string(),
+  name: z.string(),
+  ump: z.number().int(),
+  year: z.number().int(),
+  source: z.string(),
   sourceUrl: z.url(),
-  note: z.string().optional(),
+  needsReview: z.boolean().optional(),
 });
 
 // ---------- Scenarios (Impact Simulator) ----------
@@ -133,6 +198,9 @@ export type Fallacy = z.infer<typeof Fallacy>;
 export type FallacyCategory = z.infer<typeof FallacyCategory>;
 export type QuizItem = z.infer<typeof QuizItem>;
 export type Figure = z.infer<typeof Figure>;
+export type FigureKind = z.infer<typeof FigureKind>;
+export type TaxRules = z.infer<typeof TaxRules>;
+export type Province = z.infer<typeof Province>;
 export type Scenario = z.infer<typeof Scenario>;
 export type SceneNode = z.infer<typeof SceneNode>;
 export type EndingNode = z.infer<typeof EndingNode>;

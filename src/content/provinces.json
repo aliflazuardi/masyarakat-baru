@@ -1,0 +1,45 @@
+[
+  {
+    "key": "dki-jakarta",
+    "name": "DKI Jakarta",
+    "ump": 5729876,
+    "year": 2026,
+    "source": "Daftar UMP 2026, via Kompas TV",
+    "sourceUrl": "https://www.kompas.tv/info-publik/639870/daftar-lengkap-ump-2026-di-seluruh-provinsi-dki-jakarta-tertinggi-dengan-rp5-729-876?page=all"
+  },
+  {
+    "key": "jawa-barat",
+    "name": "Jawa Barat",
+    "ump": 2317601,
+    "year": 2026,
+    "source": "Daftar UMP 2026, via Fortune Indonesia",
+    "sourceUrl": "https://www.fortuneidn.com/news/daftar-ump-2026-lengkap-38-provinsi-d7w03-00-dz73p-h06j9m",
+    "needsReview": true
+  },
+  {
+    "key": "jawa-tengah",
+    "name": "Jawa Tengah",
+    "ump": 2327386,
+    "year": 2026,
+    "source": "Pemprov Jawa Tengah",
+    "sourceUrl": "https://jatengprov.go.id/publik/gubernur-ahmad-luthfi-tetapkan-ump-jawa-tengah-2026-rp2-327-38607/"
+  },
+  {
+    "key": "jawa-timur",
+    "name": "Jawa Timur",
+    "ump": 2446880,
+    "year": 2026,
+    "source": "Daftar UMP 2026, via Fortune Indonesia",
+    "sourceUrl": "https://www.fortuneidn.com/news/daftar-ump-2026-lengkap-38-provinsi-d7w03-00-dz73p-h06j9m",
+    "needsReview": true
+  },
+  {
+    "key": "sumatera-utara",
+    "name": "Sumatera Utara",
+    "ump": 3228701,
+    "year": 2026,
+    "source": "Daftar UMP 2026, via Fortune Indonesia",
+    "sourceUrl": "https://www.fortuneidn.com/news/daftar-ump-2026-lengkap-38-provinsi-d7w03-00-dz73p-h06j9m",
+    "needsReview": true
+  }
+]
