@@ -519,12 +519,12 @@ Estimates are focused hours for one developer. Content writing is counted separa
 
 ### Phase 1: Kamus + Kuis Sesat Pikir (about 1.5 days + content)
 *Mirrors the deck's Phase 1: quickest to build and the most viral.*
-- [ ] Write `fallacies.json` (about 18 entries)
-- [ ] Kamus page: grid, search, tag filter, accordion/modal, deep links
-- [ ] Write `quiz.json` (at least 21 items; target 30)
-- [ ] `daily.ts` (WIB day index, seeded pick) and `streak.ts`, with tests
-- [ ] Quiz UI: question, feedback, result, streak, countdown, share
-- [ ] Test that every quiz option resolves to a fallacy or "valid"
+- [x] Write `fallacies.json` (about 18 entries)
+- [x] Kamus page: grid, search, tag filter, accordion/modal, deep links
+- [x] Write `quiz.json` (at least 21 items; target 30)
+- [x] `daily.ts` (WIB day index, seeded pick) and `streak.ts`, with tests
+- [x] Quiz UI: question, feedback, result, streak, countdown, share
+- [x] Test that every quiz option resolves to a fallacy or "valid"
 
 ### Phase 2: Bahasa Bayi Calculator (about 3 days + data gathering)
 *Mirrors the deck's Phase 2: needs data modelling.*
@@ -609,6 +609,10 @@ Append new entries; don't rewrite old ones.
 | 2026-10-01 | `trailingSlash: true` and a zero-dependency `scripts/serve-static.mjs` | Static hosts resolve `/route/` to `index.html`; E2E tests run against the exact `out/` that ships | `next start` (not available with static export), `serve` package |
 | 2026-10-01 | Playwright pinned to 1.56 | Matches the Chromium preinstalled in Claude Code cloud sessions; CI installs its own browser | Latest Playwright |
 | 2026-10-01 | Host on **GitHub Pages** for now, with `BASE_PATH` support | Free, no extra account, deploys from `main` via Actions; moving later is cheap because the site is a plain static export | Vercel now (needs an account connection), Netlify, Cloudflare Pages |
+| 2026-10-01 | Kamus cards expand as an accordion on all screen sizes | One interaction model, simpler code, and deep links stay in context; a modal adds focus-trap complexity for little gain | Modal on desktop (as first specced in §7.4) |
+| 2026-10-01 | Daily set is chosen per "cycle": the pool is shuffled once every `floor(pool / 3)` days and sliced day by day | Guarantees no repeats within a cycle while staying deterministic and backend-free | Independent random pick per day (can repeat) |
+| 2026-10-01 | Quiz progress is saved after every answer, and a finished set can't be replayed | A reload resumes mid-set, and the streak and score can't be farmed | Only save on completion |
+| 2026-10-01 | Quiz and streak UI render only after hydration (`useHydrated`) | They depend on the client clock and localStorage; avoids hydration mismatches | Render with a server-side date |
 
 ---
 
