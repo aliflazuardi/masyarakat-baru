@@ -4,8 +4,10 @@
 import assumptionsJson from "@/content/assumptions.json";
 import budgetJson from "@/content/budget.json";
 import fallaciesJson from "@/content/fallacies.json";
+import provincesJson from "@/content/provinces.json";
 import quizJson from "@/content/quiz.json";
-import { Fallacy, Figure, QuizItem, Scenario } from "@/content/schema";
+import taxJson from "@/content/tax.json";
+import { Fallacy, Figure, Province, QuizItem, Scenario, TaxRules } from "@/content/schema";
 
 /** Scenario JSON files, keyed by slug. Register new scenarios here (Phase 3). */
 const scenarioFiles: Record<string, unknown> = {};
@@ -28,6 +30,14 @@ export function getBudgetFigures(): Figure[] {
 
 export function getAssumptions(): Figure[] {
   return Figure.array().parse(assumptionsJson);
+}
+
+export function getTaxRules(): TaxRules {
+  return TaxRules.parse(taxJson);
+}
+
+export function getProvinces(): Province[] {
+  return Province.array().parse(provincesJson);
 }
 
 export function getScenarios(): Scenario[] {

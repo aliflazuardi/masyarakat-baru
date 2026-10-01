@@ -13,7 +13,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "check": "npm run lint && npm run typecheck && npm run format:check && npm test && npm run build"
+    "check": "npm run lint && npm run typecheck && npm run format:check && npm test && npm run build",
+    "data:review": "node scripts/data-review.mjs"
   },
   "dependencies": {
     "@fontsource-variable/jetbrains-mono": "^5.3.0",

@@ -1,0 +1,56 @@
+{
+  "year": 2026,
+  "pph21": {
+    "brackets": [
+      {
+        "upTo": 60000000,
+        "rate": 0.05
+      },
+      {
+        "upTo": 250000000,
+        "rate": 0.15
+      },
+      {
+        "upTo": 500000000,
+        "rate": 0.25
+      },
+      {
+        "upTo": 5000000000,
+        "rate": 0.3
+      },
+      {
+        "upTo": null,
+        "rate": 0.35
+      }
+    ],
+    "ptkp": {
+      "self": 54000000,
+      "married": 4500000,
+      "perDependent": 4500000,
+      "maxDependents": 3
+    },
+    "biayaJabatan": {
+      "rate": 0.05,
+      "maxPerYear": 6000000
+    },
+    "pkpRounding": 1000
+  },
+  "ppn": {
+    "effectiveRate": 0.11
+  },
+  "sources": [
+    {
+      "label": "Tarif PPh Pasal 17 (UU 7/2021 HPP) dan PTKP (PMK 101/2016)",
+      "url": "https://kalkulatorpajak.id/blog/pph-21/panduan-lengkap-pph-pasal-21"
+    },
+    {
+      "label": "Biaya jabatan 5%, maks. Rp6 juta/tahun (PMK 168/2023)",
+      "url": "https://ortax.org/menentukan-biaya-jabatan-dan-biaya-pensiun-dalam-menghitung-pph-pasal-21"
+    },
+    {
+      "label": "PPN 12% x DPP 11/12 = efektif 11% untuk barang/jasa non-mewah (PMK 131/2024)",
+      "url": "https://www.pajak.go.id/en/node/113453"
+    }
+  ],
+  "needsReview": true
+}

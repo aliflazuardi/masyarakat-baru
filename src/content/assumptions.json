@@ -1,1 +1,165 @@
-[]
+[
+  {
+    "key": "penduduk",
+    "label": "Jumlah penduduk Indonesia",
+    "value": 284670000,
+    "unit": "orang",
+    "year": 2025,
+    "kind": "official",
+    "source": "BPS, SUPAS 2025 (rilis Mei 2026), via Kompas",
+    "sourceUrl": "https://money.kompas.com/read/2026/05/05/125125326/bps-jumlah-penduduk-indonesia-28467-juta-mayoritas-di-pulau-jawa"
+  },
+  {
+    "key": "anggota_rumah_tangga",
+    "label": "Rata-rata anggota rumah tangga",
+    "value": 3.9,
+    "unit": "orang",
+    "year": 2019,
+    "kind": "official",
+    "source": "BPS, Rata-rata Banyaknya Anggota Rumah Tangga 2019",
+    "sourceUrl": "https://www.bps.go.id/en/statistics-table/3/Ym1jM2VsVnVXR1JPYzNKUkwzUlBRVEJyVTJkYWR6MDkjMw==/rumah-tangga-dan-rata-rata-banyaknya-anggota-rumah-tangga-menurut-provinsi--2019.html?year=2019",
+    "note": "Angka nasional terbaru yang ditemukan (2019). Perlu diganti angka Susenas terbaru.",
+    "needsReview": true
+  },
+  {
+    "key": "pdb_2025",
+    "label": "PDB nominal 2025",
+    "value": 23821.1,
+    "unit": "IDR_T",
+    "year": 2025,
+    "kind": "official",
+    "source": "BPS, via CNBC Indonesia",
+    "sourceUrl": "https://www.cnbcindonesia.com/research/20260205103007-128-708400/pbd-indonesia-tembus-rp-23821-triliun-di-2025"
+  },
+  {
+    "key": "pdb_2026_asumsi",
+    "label": "PDB nominal 2026 (tersirat di APBN)",
+    "value": 25712.7,
+    "unit": "IDR_T",
+    "year": 2026,
+    "kind": "derived",
+    "source": "Dihitung dari APBN 2026",
+    "note": "Defisit Rp689,1 T dibagi 2,68% PDB. Dipakai untuk menghitung persen defisit di simulator.",
+    "needsReview": true
+  },
+  {
+    "key": "batas_defisit_persen_pdb",
+    "label": "Batas defisit APBN",
+    "value": 3.0,
+    "unit": "persen",
+    "year": 2003,
+    "kind": "official",
+    "source": "Penjelasan Pasal 12 ayat (3) UU 17/2003 tentang Keuangan Negara",
+    "sourceUrl": "https://www.datahukum.com/peraturan/UU_17_Tahun_2003.html"
+  },
+  {
+    "key": "mandatory_pendidikan_persen",
+    "label": "Minimal anggaran pendidikan dari APBN",
+    "value": 20.0,
+    "unit": "persen",
+    "year": 2002,
+    "kind": "official",
+    "source": "UUD 1945 Pasal 31 ayat (4)",
+    "sourceUrl": "https://www.dpr.go.id/jdih/uu1945",
+    "note": "Ditambahkan lewat amandemen keempat (2002)."
+  },
+  {
+    "key": "pengeluaran_per_kapita_bulan",
+    "label": "Rata-rata pengeluaran per kapita sebulan",
+    "value": 1570000,
+    "unit": "IDR",
+    "year": 2025,
+    "kind": "official",
+    "source": "BPS, Pengeluaran untuk Konsumsi Penduduk Indonesia Maret 2025",
+    "sourceUrl": "https://www.bps.go.id/id/publication/2025/10/10/755ea866289ba29e5104e58d/pengeluaran-untuk-konsumsi-penduduk-indonesia-maret-2025.html",
+    "note": "Dibulatkan dari \"Rp1,57 juta\"."
+  },
+  {
+    "key": "porsi_belanja_kena_ppn",
+    "label": "Perkiraan porsi penghasilan yang dibelanjakan untuk barang/jasa kena PPN",
+    "value": 40.0,
+    "unit": "persen",
+    "year": 2026,
+    "kind": "estimate",
+    "source": "Perkiraan penyusun",
+    "note": "Banyak kebutuhan pokok, pendidikan, dan layanan kesehatan dibebaskan PPN, dan sebagian penghasilan ditabung. Pengguna bisa mengubah angka ini.",
+    "needsReview": true
+  },
+  {
+    "key": "harga_mie_ayam",
+    "label": "Harga semangkuk mie ayam",
+    "value": 15000,
+    "unit": "IDR",
+    "year": 2026,
+    "kind": "estimate",
+    "source": "Perkiraan harga warung, survei harga daring 2026",
+    "note": "Harga umum Rp15.000-30.000 per porsi; dipakai batas bawah.",
+    "needsReview": true
+  },
+  {
+    "key": "harga_beras_medium",
+    "label": "Harga beras medium per kg",
+    "value": 14630,
+    "unit": "IDR",
+    "year": 2026,
+    "kind": "official",
+    "source": "BPS, harga beras September 2026, via Antara",
+    "sourceUrl": "https://www.antaranews.com/berita/5750647/bps-catat-harga-beras-medium-hingga-premium-alami-kenaikan",
+    "needsReview": true
+  },
+  {
+    "key": "harga_porsi_mbg",
+    "label": "Anggaran satu porsi MBG (bahan + operasional)",
+    "value": 15000,
+    "unit": "IDR",
+    "year": 2026,
+    "kind": "official",
+    "source": "Badan Gizi Nasional, via Kompas",
+    "sourceUrl": "https://nasional.kompas.com/read/2026/02/24/15480101/bgn-anggaran-bahan-makanan-mbg-rp-8000-rp-10000-bukan-rp-15000",
+    "note": "Bahan makanan Rp8.000-10.000, ditambah operasional dan sewa dapur hingga Rp15.000 per porsi."
+  },
+  {
+    "key": "harga_pertalite",
+    "label": "Harga Pertalite per liter",
+    "value": 10000,
+    "unit": "IDR",
+    "year": 2026,
+    "kind": "official",
+    "source": "Pertamina, via Bisnis.com",
+    "sourceUrl": "https://ekonomi.bisnis.com/read/20260610/44/1979772/daftar-harga-bbm-pertamina-per-10-juni-2026-pertamax-rp16250-pertalite-tetap-rp10000"
+  },
+  {
+    "key": "biaya_revitalisasi_sekolah",
+    "label": "Rata-rata biaya revitalisasi satu sekolah",
+    "value": 1141000000,
+    "unit": "IDR",
+    "year": 2026,
+    "kind": "derived",
+    "source": "Kemendikdasmen, Revitalisasi Sekolah 2026",
+    "sourceUrl": "https://www.kemendikdasmen.go.id/berita/15603-revitalisasi-sekolah-melampaui-target-kemendikdasmen-siapkan-perluasan-program-tahun-2026",
+    "note": "Rp13,4 T untuk 11.744 satuan pendidikan, dibulatkan.",
+    "needsReview": true
+  },
+  {
+    "key": "ambang_subsidi_sedang",
+    "label": "Pemangkasan subsidi energi yang dianggap menekan harga sedang",
+    "value": 10.0,
+    "unit": "persen",
+    "year": 2026,
+    "kind": "estimate",
+    "source": "Asumsi model penyusun",
+    "note": "Ilustratif: pemangkasan di atas angka ini ditampilkan sebagai tekanan harga energi \"sedang\".",
+    "needsReview": true
+  },
+  {
+    "key": "ambang_subsidi_tinggi",
+    "label": "Pemangkasan subsidi energi yang dianggap menekan harga tinggi",
+    "value": 30.0,
+    "unit": "persen",
+    "year": 2026,
+    "kind": "estimate",
+    "source": "Asumsi model penyusun",
+    "note": "Ilustratif: pemangkasan di atas angka ini ditampilkan sebagai tekanan harga energi \"tinggi\".",
+    "needsReview": true
+  }
+]
