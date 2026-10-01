@@ -37,6 +37,36 @@ describe("content files", () => {
   });
 });
 
+describe("Phase 1 content", () => {
+  it("has the planned fallacy set and a big enough quiz pool", () => {
+    expect(getFallacies().length).toBeGreaterThanOrEqual(18);
+    // At least one week of 3-per-day sets (BUILD_PLAN.md §7.3).
+    expect(getQuizPool().length).toBeGreaterThanOrEqual(21);
+  });
+
+  it("has unique quiz ids", () => {
+    const ids = getQuizPool().map((q) => q.id);
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+
+  it("covers every fallacy and includes valid arguments", () => {
+    const answers = new Set(getQuizPool().map((q) => q.answer));
+    for (const f of getFallacies()) expect(answers, `no question for ${f.slug}`).toContain(f.slug);
+    expect(answers).toContain(VALID_ARGUMENT);
+  });
+
+  it("keeps explanations to at most two sentences", () => {
+    for (const q of getQuizPool()) {
+      // Count sentence-ending punctuation outside quoted phrases.
+      const sentences = q.explanation
+        .replace(/"[^"]*"/g, "")
+        .split(/[.!?](?:\s|$)/)
+        .filter((s) => s.trim());
+      expect(sentences.length, q.id).toBeLessThanOrEqual(2);
+    }
+  });
+});
+
 describe("schemas", () => {
   it("reject a quiz answer that is not among the options", () => {
     const result = QuizItem.safeParse({
