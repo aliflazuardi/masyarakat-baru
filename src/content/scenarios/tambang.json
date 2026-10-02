@@ -1,0 +1,399 @@
+{
+  "slug": "tambang",
+  "title": "Tambang di Desa Kami",
+  "tagline": "Jadilah kepala desa yang harus memilih antara uang sekarang dan tanah untuk anak cucu.",
+  "perspective": "Kepala desa",
+  "intro": "Kamu adalah kepala desa Lembah Hijau. Keputusanmu akan terasa bertahun-tahun ke depan. Perhatikan empat ukuran: kas desa, lingkungan, kesehatan warga, dan kerukunan.",
+  "disclaimer": "Desa dan tokoh dalam skenario ini fiktif. Dinamikanya terinspirasi dari berbagai kasus tambang di Indonesia, termasuk yang diliput media dan organisasi lingkungan di Kalimantan Selatan.",
+  "probabilityNote": "Peluang hasil di simulator ini adalah perkiraan ilustratif penyusun untuk menunjukkan ketidakpastian, bukan statistik resmi.",
+  "meters": [
+    {
+      "key": "kas",
+      "label": "Kas desa",
+      "initial": 20,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "key": "lingkungan",
+      "label": "Air & lahan",
+      "initial": 80,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "key": "kesehatan",
+      "label": "Kesehatan warga",
+      "initial": 75,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "key": "kerukunan",
+      "label": "Kerukunan",
+      "initial": 50,
+      "min": 0,
+      "max": 100
+    }
+  ],
+  "start": "tawaran",
+  "nodes": {
+    "tawaran": {
+      "type": "scene",
+      "title": "Tahun 0 · Tawaran",
+      "text": "Kamu baru terpilih sebagai kepala desa Lembah Hijau, desa petani padi dan karet. Sebuah perusahaan tambang batu bara datang dengan tawaran: dana kompensasi untuk kas desa, ratusan lowongan kerja, dan jalan beraspal. Warga menunggu keputusanmu.",
+      "choices": [
+        {
+          "label": "Setujui sepenuhnya: desa butuh uang sekarang",
+          "effects": {
+            "kas": 40,
+            "kerukunan": -10
+          },
+          "next": "y1_tambang"
+        },
+        {
+          "label": "Setujui dengan syarat ketat: AMDAL yang melibatkan warga, jaminan reklamasi, dana kesehatan",
+          "effects": {
+            "kas": 20
+          },
+          "next": "y1_syarat"
+        },
+        {
+          "label": "Tolak: lahan pertanian lebih penting",
+          "effects": {
+            "kerukunan": -5
+          },
+          "next": "y1_tolak"
+        },
+        {
+          "label": "Gelar musyawarah desa dulu",
+          "effects": {
+            "kerukunan": 10
+          },
+          "next": "musyawarah"
+        }
+      ]
+    },
+    "musyawarah": {
+      "type": "scene",
+      "title": "Tahun 0 · Musyawarah",
+      "text": "Balai desa penuh. Anak-anak muda ingin pekerjaan; petani tua takut sawah rusak; ibu-ibu bertanya soal air. Suara terbelah, tapi semua merasa didengar.",
+      "choices": [
+        {
+          "label": "Ikuti jalan tengah: setuju dengan syarat ketat",
+          "effects": {
+            "kas": 20,
+            "kerukunan": 5
+          },
+          "next": "y1_syarat"
+        },
+        {
+          "label": "Ikuti suara petani: tolak",
+          "next": "y1_tolak"
+        }
+      ]
+    },
+    "y1_tambang": {
+      "type": "scene",
+      "title": "Tahun 1 · Uang datang",
+      "text": "Kas desa terisi. Jalan diaspal, 200 warga bekerja di tambang, dan warung-warung ramai. Debu mulai terlihat di musim kemarau, tapi semua orang sibuk menikmati hasil.",
+      "choices": [
+        {
+          "label": "Gunakan kas desa untuk jalan, gapura, dan perayaan",
+          "effects": {
+            "kas": -20,
+            "kerukunan": 10,
+            "lingkungan": -10
+          },
+          "next": "y3_tambang"
+        },
+        {
+          "label": "Sisihkan sebagian kas sebagai dana cadangan lingkungan dan kesehatan",
+          "effects": {
+            "kas": -5,
+            "kesehatan": 10,
+            "lingkungan": -10
+          },
+          "next": "y3_tambang"
+        }
+      ]
+    },
+    "y1_syarat": {
+      "type": "scene",
+      "title": "Tahun 1 · Tambang berpagar",
+      "text": "Tambang berjalan lebih lambat dari janji awal. Pemasukan desa lebih kecil, sebagian warga kecewa karena lowongan kerja tidak sebanyak yang dibayangkan. Tapi sungai masih jernih.",
+      "choices": [
+        {
+          "label": "Bentuk tim pengawas warga untuk memantau air dan lahan",
+          "effects": {
+            "kas": -10,
+            "kerukunan": 10
+          },
+          "next": "y3_syarat"
+        },
+        {
+          "label": "Percayakan pengawasan kepada perusahaan",
+          "effects": {
+            "lingkungan": -15
+          },
+          "next": "y3_tambang"
+        }
+      ]
+    },
+    "y1_tolak": {
+      "type": "scene",
+      "title": "Tahun 1 · Tetap bertani",
+      "text": "Perusahaan tidak menyerah. Mereka mendekati pemilik lahan satu per satu dengan harga tinggi. Sebagian warga tergoda; harga karet sedang jatuh.",
+      "choices": [
+        {
+          "label": "Bantu petani dengan koperasi dan dana desa",
+          "effects": {
+            "kas": -15,
+            "kerukunan": 10
+          },
+          "next": "y3_tolak"
+        },
+        {
+          "label": "Biarkan warga memutuskan sendiri",
+          "effects": {
+            "kerukunan": -15
+          },
+          "next": "y3_terbelah"
+        }
+      ]
+    },
+    "y3_tambang": {
+      "type": "scene",
+      "title": "Tahun 3 · Harga yang mulai terlihat",
+      "text": "Sumur warga mulai keruh, panen padi turun, dan puskesmas mencatat lebih banyak anak dengan batuk dan sesak napas. Lubang tambang makin dekat ke permukiman.",
+      "choices": [
+        {
+          "label": "Tuntut perusahaan bertanggung jawab",
+          "effects": {
+            "kerukunan": 5
+          },
+          "outcomes": [
+            {
+              "weight": 0.4,
+              "next": "y5_tanggung",
+              "label": "Perusahaan memenuhi sebagian tuntutan"
+            },
+            {
+              "weight": 0.6,
+              "next": "y5_abai",
+              "label": "Perusahaan mengulur waktu"
+            }
+          ]
+        },
+        {
+          "label": "Diam: pekerjaan warga dipertaruhkan",
+          "effects": {
+            "kesehatan": -25,
+            "lingkungan": -35
+          },
+          "next": "kota_tambang"
+        }
+      ]
+    },
+    "y3_syarat": {
+      "type": "scene",
+      "title": "Tahun 3 · Godaan",
+      "text": "Perusahaan menawarkan dana tambahan besar jika desa mau melonggarkan syarat: memperluas area tambang ke dekat sungai.",
+      "choices": [
+        {
+          "label": "Tolak, tegakkan syarat awal",
+          "effects": {
+            "kas": -5,
+            "lingkungan": 10
+          },
+          "next": "jalan_tengah"
+        },
+        {
+          "label": "Terima dana tambahan",
+          "effects": {
+            "kas": 30,
+            "lingkungan": -20
+          },
+          "next": "y5_tanggung"
+        }
+      ]
+    },
+    "y3_tolak": {
+      "type": "scene",
+      "title": "Tahun 3 · Desa yang menua",
+      "text": "Koperasi membantu harga karet, tapi anak-anak muda banyak merantau ke kota. Kas desa tipis. Perusahaan kembali menawarkan kerja sama.",
+      "choices": [
+        {
+          "label": "Bertahan dengan pertanian",
+          "effects": {
+            "kas": -5
+          },
+          "next": "tetap_tani"
+        },
+        {
+          "label": "Buka negosiasi baru dengan syarat ketat",
+          "effects": {
+            "kas": 15
+          },
+          "next": "y3_syarat"
+        }
+      ]
+    },
+    "y3_terbelah": {
+      "type": "scene",
+      "title": "Tahun 3 · Tetangga jadi asing",
+      "text": "Separuh warga sudah menjual lahan. Yang menjual pindah atau bekerja di tambang; yang bertahan merasa dikepung lubang galian. Pertengkaran pecah di musyawarah.",
+      "choices": [
+        {
+          "label": "Mediasi warga dan susun aturan desa bersama",
+          "effects": {
+            "kerukunan": 20
+          },
+          "requires": {
+            "kerukunan": 40
+          },
+          "lockedReason": "Kepercayaan warga padamu sudah terlalu rendah untuk memimpin mediasi.",
+          "next": "jalan_tengah"
+        },
+        {
+          "label": "Ikut arus",
+          "effects": {
+            "kerukunan": -10
+          },
+          "next": "retak_sosial"
+        }
+      ]
+    },
+    "y5_tanggung": {
+      "type": "scene",
+      "title": "Tahun 5 · Air bersih, lubang lebih besar",
+      "text": "Perusahaan membangun instalasi air bersih dan klinik. Sebagai gantinya, mereka meminta izin memperluas tambang.",
+      "choices": [
+        {
+          "label": "Izinkan perluasan",
+          "effects": {
+            "kas": 20,
+            "lingkungan": -30,
+            "kesehatan": -10
+          },
+          "next": "kota_tambang"
+        },
+        {
+          "label": "Tolak perluasan, tetapkan batas permanen",
+          "effects": {
+            "kas": -10,
+            "lingkungan": 10
+          },
+          "requires": {
+            "kerukunan": 40
+          },
+          "lockedReason": "Tanpa dukungan warga yang solid, kamu tidak punya posisi tawar untuk menolak.",
+          "next": "jalan_tengah"
+        }
+      ]
+    },
+    "y5_abai": {
+      "type": "scene",
+      "title": "Tahun 5 · Diabaikan",
+      "text": "Surat-surat desa tak berbalas. Warga mulai marah, sebagian kepadamu.",
+      "choices": [
+        {
+          "label": "Bawa kasus ke kabupaten dan media",
+          "effects": {
+            "kas": -10
+          },
+          "outcomes": [
+            {
+              "weight": 0.5,
+              "next": "jalan_tengah",
+              "label": "Pemerintah kabupaten turun tangan"
+            },
+            {
+              "weight": 0.5,
+              "next": "retak_sosial",
+              "label": "Konflik makin tajam"
+            }
+          ]
+        },
+        {
+          "label": "Pasrah",
+          "effects": {
+            "kerukunan": -15,
+            "kesehatan": -15,
+            "lingkungan": -25
+          },
+          "next": "kota_tambang"
+        }
+      ]
+    },
+    "kota_tambang": {
+      "type": "ending",
+      "title": "Tahun 10 · Desa kaya, tanah rusak",
+      "text": "Kas desa pernah melimpah, jalan bagus, dan banyak rumah direnovasi. Tapi sawah berganti lubang berisi air, sumur harus diganti air galon, dan ketika tambang tutup, lapangan kerja ikut hilang.",
+      "reflection": "Keuntungan tambang datang cepat dan terlihat; kerugiannya datang pelan dan sering ditanggung orang yang berbeda.",
+      "winners": [
+        "Pemilik lahan yang menjual lebih awal",
+        "Pekerja tambang selama tambang beroperasi",
+        "Kas desa dalam jangka pendek"
+      ],
+      "losers": [
+        "Petani yang kehilangan sawah",
+        "Anak-anak yang tumbuh dengan udara berdebu",
+        "Generasi berikut yang mewarisi lubang tambang"
+      ]
+    },
+    "jalan_tengah": {
+      "type": "ending",
+      "title": "Tahun 10 · Tambang berpagar",
+      "text": "Tambang beroperasi dengan batas yang jelas dan diawasi warga. Pemasukan desa tidak sebesar janji awal, dan tetap ada kerusakan, tapi sungai dan sebagian besar sawah terjaga.",
+      "reflection": "Jalan tengah butuh warga yang kompak, pemimpin yang berani menolak godaan, dan pengawasan yang terus-menerus. Itu melelahkan, tapi mungkin.",
+      "winners": ["Petani yang lahannya terlindungi", "Warga yang terlibat dalam pengawasan"],
+      "losers": ["Warga yang berharap kaya cepat", "Perusahaan yang keuntungannya dibatasi"]
+    },
+    "tetap_tani": {
+      "type": "ending",
+      "title": "Tahun 10 · Tetap bertani",
+      "text": "Lembah Hijau tetap hijau. Sawah dan kebun karet masih ada, air masih jernih. Tapi desa sepi: banyak anak muda bekerja di kota, dan kas desa selalu pas-pasan.",
+      "reflection": "Menolak tambang menjaga lingkungan, tapi tanpa alternatif ekonomi yang kuat, desa tetap menanggung biaya lain: kemiskinan dan perantauan.",
+      "winners": ["Petani dan lingkungan", "Generasi berikut yang mewarisi lahan subur"],
+      "losers": ["Anak muda yang butuh pekerjaan", "Kas desa"]
+    },
+    "retak_sosial": {
+      "type": "ending",
+      "title": "Tahun 10 · Desa terbelah",
+      "text": "Tambang tetap berjalan, tapi desa terbelah: yang pro dan yang kontra tak lagi saling sapa. Musyawarah desa jarang digelar, dan keputusan diambil orang luar.",
+      "reflection": "Kerusakan paling sulit diperbaiki kadang bukan tanah, tapi kepercayaan antarwarga.",
+      "winners": ["Pihak luar yang diuntungkan dari desa yang lemah"],
+      "losers": ["Hampir semua warga", "Kepala desa yang kehilangan kepercayaan"]
+    }
+  },
+  "realStory": [
+    {
+      "title": "Malaka Project: video tentang Rantau Bakula",
+      "url": "https://youtu.be/IaNWK935srw",
+      "publisher": "Malaka Project",
+      "needsReview": true
+    },
+    {
+      "title": "Warga Rantau Bakula Cari Keadilan sampai ke Jakarta",
+      "url": "https://mongabay.co.id/2026/08/15/warga-rantau-bakula-cari-keadilan-sampai-ke-jakarta/",
+      "publisher": "Mongabay Indonesia"
+    }
+  ],
+  "actions": [
+    {
+      "label": "Pelajari dampak tambang bersama JATAM",
+      "url": "https://www.jatam.org/",
+      "org": "JATAM",
+      "description": "Jaringan Advokasi Tambang yang memantau dampak pertambangan di Indonesia.",
+      "verifiedAt": null
+    },
+    {
+      "label": "Dukung WALHI",
+      "url": "https://www.walhi.or.id/",
+      "org": "WALHI",
+      "description": "Organisasi lingkungan hidup dengan jaringan di seluruh Indonesia.",
+      "verifiedAt": null
+    }
+  ]
+}

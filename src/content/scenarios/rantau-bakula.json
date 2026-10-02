@@ -1,0 +1,459 @@
+{
+  "slug": "rantau-bakula",
+  "title": "18 Tahun di Rantau Bakula",
+  "tagline": "Rasakan menjadi warga yang rumahnya retak di atas tambang batu bara bawah tanah.",
+  "perspective": "Warga desa",
+  "intro": "Kamu adalah warga Desa Rantau Bakula. Hampir dua dekade, tambang batu bara bawah tanah beroperasi di bawah rumah dan kebunmu. Setiap pilihan punya harga: uang, kesehatan, dukungan tetangga, dan perhatian publik.",
+  "disclaimer": "Skenario ini terinspirasi kisah nyata warga Rantau Bakula sebagaimana dilaporkan media dan organisasi lingkungan. Tokoh, dialog, dan urutan kejadian disederhanakan dan sebagian fiktif. Tidak ada kutipan dari orang sungguhan.",
+  "probabilityNote": "Peluang hasil di simulator ini adalah perkiraan ilustratif penyusun untuk menunjukkan ketidakpastian, bukan statistik resmi.",
+  "meters": [
+    {
+      "key": "tabungan",
+      "label": "Tabungan",
+      "initial": 45,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "key": "kesehatan",
+      "label": "Kesehatan keluarga",
+      "initial": 60,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "key": "dukungan",
+      "label": "Dukungan warga",
+      "initial": 30,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "key": "perhatian",
+      "label": "Perhatian publik",
+      "initial": 10,
+      "min": 0,
+      "max": 100
+    }
+  ],
+  "start": "retak",
+  "nodes": {
+    "retak": {
+      "type": "scene",
+      "title": "Retakan di dinding",
+      "text": "Kamu tinggal di Desa Rantau Bakula, Kabupaten Banjar, Kalimantan Selatan. Sejak tambang batu bara bawah tanah mulai beroperasi di bawah desa pada 2007, hidupmu pelan-pelan berubah. Pagi ini, retakan di dinding dapur melebar lagi. Lantai teras turun beberapa sentimeter, dan sumur di belakang rumah makin keruh.",
+      "choices": [
+        {
+          "label": "Lapor ke pemerintah desa dan kabupaten",
+          "effects": {
+            "tabungan": -5
+          },
+          "next": "lapor"
+        },
+        {
+          "label": "Ajak tetangga berkumpul membicarakan nasib bersama",
+          "effects": {
+            "dukungan": 10
+          },
+          "next": "warga"
+        },
+        {
+          "label": "Terima tawaran perusahaan untuk menambal retakan",
+          "effects": {
+            "kesehatan": 5
+          },
+          "next": "tambal"
+        }
+      ]
+    },
+    "tambal": {
+      "type": "scene",
+      "title": "Tambalan sementara",
+      "text": "Tukang dari perusahaan datang, menambal dinding dengan semen, lalu pergi. Tiga bulan kemudian, retakan muncul lagi di tempat yang sama, kali ini lebih panjang. Sumurmu kering di musim kemarau, dan kamu mulai membeli air galon untuk masak.",
+      "choices": [
+        {
+          "label": "Bergabung dengan tetangga yang mengalami hal serupa",
+          "effects": {
+            "dukungan": 10
+          },
+          "next": "warga"
+        },
+        {
+          "label": "Mulai memikirkan untuk menjual lahan dan pindah",
+          "effects": {
+            "tabungan": -10,
+            "kesehatan": -5
+          },
+          "next": "jual"
+        }
+      ]
+    },
+    "lapor": {
+      "type": "scene",
+      "title": "Map di meja dinas",
+      "text": "Laporanmu diterima dengan ramah. Kamu dijanjikan tindak lanjut, dan beberapa bulan kemudian DPRD menggelar rapat dengar pendapat. Kamu pulang dengan harapan, tapi belum ada keputusan apa pun.",
+      "choices": [
+        {
+          "label": "Menunggu tindak lanjut dari pemerintah",
+          "next": "tunggu"
+        },
+        {
+          "label": "Tidak mau menunggu sendirian: ajak warga lain bersatu",
+          "effects": {
+            "dukungan": 10
+          },
+          "next": "warga"
+        }
+      ]
+    },
+    "tunggu": {
+      "type": "scene",
+      "title": "Menunggu",
+      "text": "Setahun berlalu tanpa kabar. Ongkos membeli air bersih menggerus tabunganmu. Anakmu sering batuk; debu batu bara menempel di jemuran setiap sore. Di warung, orang-orang mulai bicara soal pindah.",
+      "choices": [
+        {
+          "label": "Akhirnya bergabung dengan aliansi warga",
+          "effects": {
+            "tabungan": -10,
+            "dukungan": 10
+          },
+          "next": "warga"
+        },
+        {
+          "label": "Mempertimbangkan menjual lahan",
+          "effects": {
+            "tabungan": -15,
+            "kesehatan": -10
+          },
+          "next": "jual"
+        }
+      ]
+    },
+    "jual": {
+      "type": "scene",
+      "title": "Tawaran harga",
+      "text": "Perusahaan menyebut persoalan ini sebagai urusan pembebasan lahan, bukan lingkungan, dan siap membeli lahan dengan \"harga wajar\". Tapi tanah ini warisan orang tuamu, kebunmu ada di sini, dan tetanggamu belum tentu mendapat tawaran yang sama.",
+      "choices": [
+        {
+          "label": "Terima tawaran dan pindah",
+          "effects": {
+            "tabungan": 30,
+            "dukungan": -15
+          },
+          "next": "pindah"
+        },
+        {
+          "label": "Jangan jual sendirian: perjuangkan bersama warga",
+          "effects": {
+            "dukungan": 15
+          },
+          "next": "warga"
+        }
+      ]
+    },
+    "warga": {
+      "type": "scene",
+      "title": "Bersatu",
+      "text": "Puluhan warga berkumpul di rumah salah satu tetua. Kalian membentuk aliansi, mendata rumah yang retak, sumur yang kering, dan sawah yang tercemar lumpur tambang. Organisasi lingkungan menawarkan pendampingan. Kini kalian harus memilih jalan.",
+      "choices": [
+        {
+          "label": "Sewa pengacara sendiri dan menggugat",
+          "effects": {
+            "tabungan": -40
+          },
+          "requires": {
+            "tabungan": 60
+          },
+          "lockedReason": "Biaya pengacara, saksi ahli, dan bolak-balik ke pengadilan jauh di luar kemampuanmu.",
+          "next": "hukum"
+        },
+        {
+          "label": "Gugat bersama warga dengan pendamping hukum gratis",
+          "effects": {
+            "dukungan": -5
+          },
+          "requires": {
+            "dukungan": 40
+          },
+          "lockedReason": "Belum cukup warga yang mau menjadi penggugat bersama. Perlu dukungan lebih luas.",
+          "next": "hukum"
+        },
+        {
+          "label": "Minta DPRD memediasi dengan perusahaan",
+          "effects": {
+            "tabungan": -5
+          },
+          "next": "mediasi"
+        },
+        {
+          "label": "Gelar aksi damai dan istighosah di depan kantor perusahaan",
+          "effects": {
+            "dukungan": 10,
+            "perhatian": 15
+          },
+          "next": "aksi"
+        }
+      ]
+    },
+    "hukum": {
+      "type": "scene",
+      "title": "Ruang sidang",
+      "text": "Gugatan didaftarkan. Sidang demi sidang ditunda. Kamu harus izin kerja setiap kali hadir, dan beberapa saksi mundur karena takut. Hakim meminta bukti ilmiah bahwa retakan disebabkan tambang, dan uji ahli itu mahal.",
+      "choices": [
+        {
+          "label": "Tetap lanjut sampai putusan",
+          "effects": {
+            "tabungan": -10,
+            "kesehatan": -10
+          },
+          "outcomes": [
+            {
+              "weight": 0.35,
+              "next": "putusan",
+              "label": "Gugatan dikabulkan sebagian"
+            },
+            {
+              "weight": 0.65,
+              "next": "berlarut",
+              "label": "Perkara berlarut-larut"
+            }
+          ]
+        }
+      ]
+    },
+    "mediasi": {
+      "type": "scene",
+      "title": "Meja mediasi",
+      "text": "Di ruang rapat DPRD, perwakilan perusahaan menegaskan masalahnya adalah pembebasan lahan. Mereka siap membeli lahan warga yang surat-suratnya lengkap. Sebagian warga tidak punya sertifikat, hanya surat keterangan tanah lama.",
+      "choices": [
+        {
+          "label": "Terima tawaran pembelian lahan",
+          "effects": {
+            "tabungan": 25,
+            "dukungan": -15
+          },
+          "next": "pindah"
+        },
+        {
+          "label": "Tolak: tuntut pembelian menyeluruh untuk semua warga terdampak",
+          "effects": {
+            "dukungan": 10,
+            "kesehatan": -5
+          },
+          "next": "berlarut"
+        },
+        {
+          "label": "Ceritakan kasus ini ke media dan kreator konten",
+          "effects": {
+            "perhatian": 20
+          },
+          "next": "media"
+        }
+      ]
+    },
+    "aksi": {
+      "type": "scene",
+      "title": "Aksi damai",
+      "text": "Ratusan warga berdoa bersama di pinggir jalan desa. Aksinya damai. Beberapa hari kemudian, dalam kisah ini, dua tetanggamu dipanggil polisi atas laporan perusahaan. Warga lain mulai ragu untuk bersuara.",
+      "choices": [
+        {
+          "label": "Terus bersuara dan ceritakan ke media",
+          "effects": {
+            "perhatian": 20,
+            "kesehatan": -5
+          },
+          "next": "media"
+        },
+        {
+          "label": "Mundur dulu demi keamanan keluarga",
+          "effects": {
+            "dukungan": -15
+          },
+          "next": "bertahan"
+        }
+      ]
+    },
+    "media": {
+      "type": "scene",
+      "title": "Sorotan",
+      "text": "Kisah desamu diliput media, dibahas organisasi lingkungan, dan dibicarakan di podcast. Untuk pertama kalinya, orang di luar Kalimantan tahu nama Rantau Bakula. Tapi sorotan juga membawa tekanan.",
+      "choices": [
+        {
+          "label": "Manfaatkan momentum",
+          "effects": {
+            "perhatian": 10
+          },
+          "outcomes": [
+            {
+              "weight": 0.5,
+              "next": "jakarta",
+              "label": "Perhatian berubah menjadi dukungan nasional"
+            },
+            {
+              "weight": 0.5,
+              "next": "tekanan",
+              "label": "Muncul tekanan balik terhadap warga"
+            }
+          ]
+        }
+      ]
+    },
+    "tekanan": {
+      "type": "scene",
+      "title": "Tekanan balik",
+      "text": "Orang tak dikenal mulai datang ke desa menanyakan siapa yang bicara ke wartawan. Sebagian tetangga disarankan \"jangan ikut-ikutan\". Keluargamu cemas.",
+      "choices": [
+        {
+          "label": "Minta perlindungan dan bawa kasus ke Jakarta",
+          "effects": {
+            "tabungan": -10,
+            "dukungan": 5
+          },
+          "next": "jakarta"
+        },
+        {
+          "label": "Berhenti bersuara",
+          "effects": {
+            "perhatian": -15,
+            "dukungan": -10
+          },
+          "next": "bertahan"
+        }
+      ]
+    },
+    "berlarut": {
+      "type": "scene",
+      "title": "Berlarut-larut",
+      "text": "Tahun demi tahun lewat. Rapat, surat, dan janji silih berganti, sementara retakan di rumahmu terus bertambah. Tabunganmu habis untuk air bersih dan perbaikan darurat.",
+      "choices": [
+        {
+          "label": "Berangkat ke Jakarta bersama perwakilan warga",
+          "effects": {
+            "tabungan": -10
+          },
+          "requires": {
+            "dukungan": 40
+          },
+          "lockedReason": "Ongkos dan suara bersama hanya mungkin jika cukup banyak warga yang mendukung.",
+          "next": "jakarta"
+        },
+        {
+          "label": "Menyerah dan menjual lahan",
+          "effects": {
+            "tabungan": 20,
+            "dukungan": -10
+          },
+          "next": "pindah"
+        },
+        {
+          "label": "Bertahan di rumah dan berharap",
+          "effects": {
+            "kesehatan": -10
+          },
+          "next": "bertahan"
+        }
+      ]
+    },
+    "jakarta": {
+      "type": "scene",
+      "title": "Ke Jakarta",
+      "text": "Bersama perwakilan warga dan pendamping, kamu mengadu ke DPR RI, Komnas HAM, dan Komnas Perempuan. Untuk pertama kalinya, cerita desamu didengar di ruang rapat di Senayan. DPR mendorong Komnas HAM turun langsung ke lapangan.",
+      "choices": [
+        {
+          "label": "Pulang dan menunggu hasilnya",
+          "effects": {
+            "perhatian": 15
+          },
+          "outcomes": [
+            {
+              "weight": 0.5,
+              "next": "pengakuan",
+              "label": "Lembaga negara turun ke lapangan"
+            },
+            {
+              "weight": 0.5,
+              "next": "sorotan",
+              "label": "Perhatian naik, risiko juga naik"
+            }
+          ]
+        }
+      ]
+    },
+    "putusan": {
+      "type": "ending",
+      "title": "Menang di atas kertas",
+      "text": "Pengadilan mengabulkan sebagian gugatan: perusahaan diperintahkan memperbaiki kerusakan. Tapi pelaksanaannya lambat, dan banyak rumah tetangga tidak termasuk dalam putusan.",
+      "reflection": "Jalur hukum bisa menang, tapi butuh waktu, biaya, bukti ilmiah, dan keberanian saksi. Putusan baru awal dari perjuangan berikutnya: memastikan putusan dijalankan."
+    },
+    "pindah": {
+      "type": "ending",
+      "title": "Pindah, tapi kehilangan kampung",
+      "text": "Kamu menjual lahan dan pindah ke rumah baru. Lebih aman, tapi kebun, makam keluarga, dan tetangga yang dulu seperti saudara tertinggal di belakang. Sebagian tetangga tidak mendapat tawaran yang sama.",
+      "reflection": "Ganti rugi bisa menyelesaikan masalah satu keluarga, tapi tidak selalu menyelesaikan masalah satu kampung. Siapa yang tidak punya surat tanah sering kali paling dirugikan."
+    },
+    "bertahan": {
+      "type": "ending",
+      "title": "Bertahan dalam diam",
+      "text": "Kamu memilih bertahan dan diam. Retakan terus melebar, air bersih tetap harus dibeli, dan tidak ada yang berubah. Kamu tidak salah: rasa takut dan lelah itu nyata.",
+      "reflection": "Ketika memperjuangkan hak terasa mahal dan berisiko, diam sering menjadi pilihan paling masuk akal bagi warga. Itulah mengapa dukungan dari luar desa begitu penting."
+    },
+    "pengakuan": {
+      "type": "ending",
+      "title": "Diakui, tapi belum selesai",
+      "text": "Komnas HAM datang ke desa, mendengar warga, dan mencatat temuan. Pemerintah daerah berjanji membentuk tim. Ini kemajuan nyata, tapi rumahmu masih retak dan belum ada kepastian kapan semuanya selesai.",
+      "reflection": "Pengakuan dari lembaga negara adalah kemenangan penting, tetapi sering bukan akhir. Perhatian publik yang terus-menerus membantu memastikan janji ditepati."
+    },
+    "sorotan": {
+      "type": "ending",
+      "title": "Sorotan dan risiko",
+      "text": "Kasus desamu kini dikenal luas dan tekanan publik ke perusahaan meningkat. Tapi warga yang paling vokal hidup dengan rasa was-was, dan beberapa menghadapi proses hukum.",
+      "reflection": "Bersuara bisa menggerakkan perubahan, tapi risikonya ditanggung paling berat oleh warga di lapangan. Pendampingan hukum dan solidaritas publik adalah pelindung mereka."
+    }
+  },
+  "realStory": [
+    {
+      "title": "Malaka Project: video tentang Rantau Bakula",
+      "url": "https://youtu.be/IaNWK935srw",
+      "publisher": "Malaka Project",
+      "needsReview": true
+    },
+    {
+      "title": "18 Tahun Bertahan di Tengah Tambang, Warga Rantau Bakula Datangi Jakarta Menuntut Keadilan Lingkungan",
+      "url": "https://www.walhi.or.id/18-tahun-bertahan-di-tengah-tambang-pt-mmi-warga-rantau-bakula-datangi-jakarta-menuntut-keadilan-lingkungan",
+      "publisher": "WALHI"
+    },
+    {
+      "title": "Warga Rantau Bakula Cari Keadilan sampai ke Jakarta",
+      "url": "https://mongabay.co.id/2026/08/15/warga-rantau-bakula-cari-keadilan-sampai-ke-jakarta/",
+      "publisher": "Mongabay Indonesia"
+    },
+    {
+      "title": "Warga Rantau Bakula Mengadu ke DPR RI dan Komnas HAM",
+      "url": "https://kalimantanpost.com/2026/07/warga-rantau-bakula-mengadu-ke-dpr-ri-dan-komnas-ham/",
+      "publisher": "Kalimantan Post"
+    }
+  ],
+  "actions": [
+    {
+      "label": "Dukung WALHI Kalimantan Selatan",
+      "url": "https://walhikalsel.or.id/",
+      "org": "WALHI Kalsel",
+      "description": "Organisasi lingkungan yang mendampingi warga Rantau Bakula.",
+      "verifiedAt": null
+    },
+    {
+      "label": "Kenali bantuan hukum gratis",
+      "url": "https://ylbhi.or.id/",
+      "org": "YLBHI",
+      "description": "Jaringan Lembaga Bantuan Hukum untuk warga yang menghadapi kasus struktural.",
+      "verifiedAt": null
+    },
+    {
+      "label": "Cara mengadu ke Komnas HAM",
+      "url": "https://www.komnasham.go.id/",
+      "org": "Komnas HAM",
+      "description": "Lembaga negara yang menerima pengaduan dugaan pelanggaran hak asasi manusia.",
+      "verifiedAt": null
+    }
+  ]
+}

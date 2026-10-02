@@ -538,13 +538,13 @@ Estimates are focused hours for one developer. Content writing is counted separa
 
 ### Phase 3: Impact Simulator (about 3 days + writing)
 *Mirrors the deck's Phase 3: narrative- and design-intensive.*
-- [ ] `engine.ts`: state machine, meters, `requires`, weighted outcomes, seeded RNG, with tests
-- [ ] Scenario validator tests
-- [ ] Simulator UI: scene card, choices, meters, transitions, resume-from-storage
-- [ ] Write Scenario A, "Rantau Bakula" (research Malaka's coverage first)
-- [ ] Write Scenario B, "Tambang di Desa Kami"
-- [ ] End screen: real story links, verified action links, replay, share
-- [ ] Source licensed images and write `CREDITS.md`
+- [x] `engine.ts`: state machine, meters, `requires`, weighted outcomes, seeded RNG, with tests
+- [x] Scenario validator tests
+- [x] Simulator UI: scene card, choices, meters, transitions, resume-from-storage
+- [x] Write Scenario A, "Rantau Bakula" (research Malaka's coverage first) *(grounded in WALHI, Mongabay and Kalimantan Post reporting; the Malaka video could not be watched from the build environment)*
+- [x] Write Scenario B, "Tambang di Desa Kami"
+- [x] End screen: real story links, verified action links, replay, share
+- [ ] Source licensed images and write `CREDITS.md` *(deferred: scenes are text-only for now; see Action Items)*
 
 ### Phase 4: Landing Page and Polish (about 1.5 days)
 - [ ] Landing page sections (§7.1)
@@ -617,6 +617,11 @@ Append new entries; don't rewrite old ones.
 | 2026-10-01 | Revenue is fixed in "Jadi Menkeu Sehari"; only spending moves. Indirect effects are shown as a level (rendah/sedang/tinggi), never a forecast | Keeps the model explainable and avoids implying precision we don't have | Elasticity-based inflation or income estimates |
 | 2026-10-01 | No chart library: ranked HTML bars (one hue), a validated teal/orange diverging pair for deltas, and limit meters with icon + text | 14 categories is too many for a donut; HTML bars are accessible, direct-labelled and add no JS. Colours checked with the dataviz palette validator (CVD-safe on the dark surface) | Recharts donut and bar charts |
 | 2026-10-01 | `Figure` gains `kind` (official/derived/estimate) and `needsReview`; `tax.json` and `provinces.json` added; `npm run data:review` generates `docs/DATA_REVIEW.md` | Makes data provenance explicit and gives a repeatable sign-off checklist | Free-text notes only |
+| 2026-10-02 | Rantau Bakula scenario uses a fictional resident and never names the company in the narrative; real reporting is linked in "Kisah aslinya" | Lets the story be faithful to public facts without putting words in real people's mouths or making claims about a real company beyond what reporting says | Naming the company and real residents in scenes |
+| 2026-10-02 | Outcome probabilities are illustrative estimates, labelled as such on screen (`probabilityNote`) | No public dataset gives success rates for these paths | Presenting them as data-backed |
+| 2026-10-02 | Runs are saved as `{seed, choiceIndexes}` and rebuilt with `replay()` | Deterministic, tiny, and a content change simply restarts the run instead of corrupting it | Saving full state |
+| 2026-10-02 | A test plays thousands of random runs to prove every ending is reachable with real meter values | Static graph checks miss endings that `requires` gates make unreachable (it caught one) | Structural validation only |
+| 2026-10-02 | Scenes ship without photos for now | No licensed photojournalism yet; text-first keeps pages fast | Stock photos of unrelated places |
 
 ---
 
@@ -667,4 +672,8 @@ Deferred work that isn't tied to a phase. Review this list before Phase 5 (launc
 - [ ] Consider a custom domain (for example `masyarakatbaru.id`) before sending the cold email.
 - [ ] **Clear the calculator data review** (`npm run data:review`): verify each flagged figure against the UU APBN 2026 / Nota Keuangan, BPS and PMK documents, then remove `needsReview`.
 - [ ] Expand `provinces.json` from 5 provinces to all 38 (UMP 2026), each with an official source.
+- [ ] **Simulator review** (listed in `npm run data:review`): confirm the Malaka video title for "Kisah aslinya", and check each "Ambil tindakan" link before setting `verifiedAt`.
+- [ ] Add a verified, active fundraising campaign (e.g. Kitabisa) for Rantau Bakula residents if one exists; none was found during Phase 3.
+- [ ] Ask Malaka (or WALHI Kalsel) for permission to use documentary stills in the simulator, with credits in `CREDITS.md`.
+- [ ] Have someone familiar with the Rantau Bakula case read Scenario A for accuracy and tone.
 
