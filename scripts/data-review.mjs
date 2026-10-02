@@ -9,6 +9,14 @@ const [budget, assumptions, tax, provinces] = await Promise.all(
   ["budget.json", "assumptions.json", "tax.json", "provinces.json"].map(load),
 );
 
+const scenarioDir = new URL("../src/content/scenarios/", import.meta.url);
+const { readdir } = await import("node:fs/promises");
+const scenarios = await Promise.all(
+  (await readdir(scenarioDir))
+    .filter((f) => f.endsWith(".json"))
+    .map(async (f) => JSON.parse(await readFile(new URL(f, scenarioDir)))),
+);
+
 const unit = (f) =>
   ({ IDR_T: `Rp${f.value} T`, IDR: `Rp${f.value.toLocaleString("id-ID")}`, persen: `${f.value}%` })[
     f.unit
@@ -32,6 +40,17 @@ for (const p of provinces.filter((p) => p.needsReview)) {
   rows.push(
     `- [ ] **UMP ${p.name}** (\`provinces.json\`): Rp${p.ump.toLocaleString("id-ID")}, ${link(p.source, p.sourceUrl)}`,
   );
+}
+
+for (const sc of scenarios) {
+  for (const r of sc.realStory.filter((r) => r.needsReview)) {
+    rows.push(`- [ ] **Kisah aslinya (${sc.slug})**: confirm the title of ${link(r.title, r.url)}`);
+  }
+  for (const a of sc.actions.filter((a) => !a.verifiedAt)) {
+    rows.push(
+      `- [ ] **Action link (${sc.slug})**: ${link(a.label, a.url)} (${a.org}). Check it is legitimate, then set \`verifiedAt\`.`,
+    );
+  }
 }
 
 const doc = `# Data review checklist

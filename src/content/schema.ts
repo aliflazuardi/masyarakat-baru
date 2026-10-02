@@ -150,7 +150,8 @@ export const Choice = z.object({
       z.object({
         weight: z.number().gt(0).lte(1),
         next: z.string(),
-        label: z.string().optional(),
+        /** Short description of this outcome, shown before choosing ("Gugatan dikabulkan sebagian"). */
+        label: z.string().min(1),
         source: z.string().optional(),
       }),
     )
@@ -171,6 +172,9 @@ export const EndingNode = z.object({
   text: z.string().min(1),
   reflection: z.string().min(1),
   image: z.string().optional(),
+  /** Who gains and who loses in this ending (trade-off scenarios). */
+  winners: z.array(z.string()).optional(),
+  losers: z.array(z.string()).optional(),
 });
 
 export const Scenario = z.object({
@@ -182,14 +186,28 @@ export const Scenario = z.object({
   meters: z.array(Meter).min(1),
   start: z.string(),
   nodes: z.record(z.string(), z.discriminatedUnion("type", [SceneNode, EndingNode])),
-  realStory: z.array(z.object({ title: z.string(), url: z.url() })),
+  /** Short line for the scenario picker. */
+  tagline: z.string().min(1),
+  /** Explains how outcome probabilities were chosen (estimates vs sourced). */
+  probabilityNote: z.string().min(1),
+  realStory: z
+    .array(
+      z.object({
+        title: z.string(),
+        url: z.url(),
+        publisher: z.string(),
+        needsReview: z.boolean().optional(),
+      }),
+    )
+    .min(1),
   actions: z.array(
     z.object({
       label: z.string(),
       url: z.url(),
       org: z.string(),
-      /** ISO date the link was last checked to be legitimate. */
-      verifiedAt: z.iso.date(),
+      description: z.string(),
+      /** ISO date a human last checked the link is legitimate; null until then. */
+      verifiedAt: z.iso.date().nullable(),
     }),
   ),
 });
