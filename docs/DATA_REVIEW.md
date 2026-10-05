@@ -6,7 +6,7 @@ Each item is shown in the calculator but has not yet been checked against its pr
 (UU APBN 2026 / Nota Keuangan, BPS tables, PMK). To sign one off: check the value, fix it if needed,
 remove `needsReview` from the JSON, and re-run the script.
 
-**19 item(s) to review**
+**26 item(s) to review**
 
 - [ ] **Bunga utang** (`alokasi_bunga_utang`): Rp599.44 T, official, [Kemenkeu, via Investor Trust](https://investortrust.id/macro/100822/kemenkeu-jaga-belanja-bunga-utang-2026-tak-melebar-dari-rp-599-44-triliun). Bagian dari fungsi pelayanan umum (Rp794,4 T). Dikunci di simulator: kewajiban yang harus dibayar.
 - [ ] **Pelayanan umum (selain bunga utang)** (`alokasi_pelayanan_umum`): Rp194.96 T, derived, [Kemenkeu, DJA: APBN 2026 Belanja Prioritas](https://anggaran.kemenkeu.go.id/in/post/apbn-2026:-belanja-prioritas-mewujudkan-kedaulatan-pangan,-energi,-dan-ekonomi). Fungsi pelayanan umum Rp794,4 T dikurangi bunga utang Rp599,44 T. Mengasumsikan bunga utang tercatat di fungsi ini.
@@ -27,3 +27,10 @@ remove `needsReview` from the JSON, and re-run the script.
 - [ ] **UMP Jawa Barat** (`provinces.json`): Rp2.317.601, [Daftar UMP 2026, via Fortune Indonesia](https://www.fortuneidn.com/news/daftar-ump-2026-lengkap-38-provinsi-d7w03-00-dz73p-h06j9m)
 - [ ] **UMP Jawa Timur** (`provinces.json`): Rp2.446.880, [Daftar UMP 2026, via Fortune Indonesia](https://www.fortuneidn.com/news/daftar-ump-2026-lengkap-38-provinsi-d7w03-00-dz73p-h06j9m)
 - [ ] **UMP Sumatera Utara** (`provinces.json`): Rp3.228.701, [Daftar UMP 2026, via Fortune Indonesia](https://www.fortuneidn.com/news/daftar-ump-2026-lengkap-38-provinsi-d7w03-00-dz73p-h06j9m)
+- [ ] **Kisah aslinya (rantau-bakula)**: confirm the title of [Malaka Project: video tentang Rantau Bakula](https://youtu.be/IaNWK935srw)
+- [ ] **Action link (rantau-bakula)**: [Dukung WALHI Kalimantan Selatan](https://walhikalsel.or.id/) (WALHI Kalsel). Check it is legitimate, then set `verifiedAt`.
+- [ ] **Action link (rantau-bakula)**: [Kenali bantuan hukum gratis](https://ylbhi.or.id/) (YLBHI). Check it is legitimate, then set `verifiedAt`.
+- [ ] **Action link (rantau-bakula)**: [Cara mengadu ke Komnas HAM](https://www.komnasham.go.id/) (Komnas HAM). Check it is legitimate, then set `verifiedAt`.
+- [ ] **Kisah aslinya (tambang)**: confirm the title of [Malaka Project: video tentang Rantau Bakula](https://youtu.be/IaNWK935srw)
+- [ ] **Action link (tambang)**: [Pelajari dampak tambang bersama JATAM](https://www.jatam.org/) (JATAM). Check it is legitimate, then set `verifiedAt`.
+- [ ] **Action link (tambang)**: [Dukung WALHI](https://www.walhi.or.id/) (WALHI). Check it is legitimate, then set `verifiedAt`.

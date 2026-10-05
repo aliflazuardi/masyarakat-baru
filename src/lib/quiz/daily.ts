@@ -1,6 +1,10 @@
 // Deterministic daily quiz selection: everyone gets the same set on the same
 // WIB (Asia/Jakarta, UTC+7) date, with no backend.
 
+import { mulberry32 } from "@/lib/random";
+
+export { mulberry32 };
+
 export const QUESTIONS_PER_DAY = 3;
 
 const DAY_MS = 86_400_000;
@@ -23,18 +27,6 @@ export function quizNumber(day: number): number {
 export function msUntilNextSet(now: Date): number {
   const nextDayStart = (wibDayIndex(now) + 1) * DAY_MS - WIB_OFFSET_MS;
   return nextDayStart - now.getTime();
-}
-
-/** mulberry32: tiny, fast, seedable PRNG returning floats in [0, 1). */
-export function mulberry32(seed: number): () => number {
-  let a = seed >>> 0;
-  return () => {
-    a = (a + 0x6d2b79f5) >>> 0;
-    let t = a;
-    t = Math.imul(t ^ (t >>> 15), t | 1);
-    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-    return ((t ^ (t >>> 14)) >>> 0) / 4_294_967_296;
-  };
 }
 
 /** Fisher–Yates shuffle with a seeded PRNG. Returns a new array. */

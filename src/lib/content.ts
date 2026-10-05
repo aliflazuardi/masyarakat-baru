@@ -6,11 +6,16 @@ import budgetJson from "@/content/budget.json";
 import fallaciesJson from "@/content/fallacies.json";
 import provincesJson from "@/content/provinces.json";
 import quizJson from "@/content/quiz.json";
+import rantauBakulaJson from "@/content/scenarios/rantau-bakula.json";
+import tambangJson from "@/content/scenarios/tambang.json";
 import taxJson from "@/content/tax.json";
 import { Fallacy, Figure, Province, QuizItem, Scenario, TaxRules } from "@/content/schema";
 
 /** Scenario JSON files, keyed by slug. Register new scenarios here (Phase 3). */
-const scenarioFiles: Record<string, unknown> = {};
+const scenarioFiles: Record<string, unknown> = {
+  "rantau-bakula": rantauBakulaJson,
+  tambang: tambangJson,
+};
 
 export function getFallacies(): Fallacy[] {
   return Fallacy.array().parse(fallaciesJson);
