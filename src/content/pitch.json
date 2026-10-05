@@ -1,0 +1,93 @@
+{
+  "audience": {
+    "key": "malaka_audience",
+    "label": "Penonton dan pendengar Malaka Project",
+    "value": 1380000,
+    "unit": "orang",
+    "year": 2026,
+    "kind": "estimate",
+    "source": "Deck \"The Next Era of Malaka\" (Malaka_Project_Overview.pdf)",
+    "note": "Angka dari deck pengajuan, dibulatkan ke bawah. Cocokkan dengan jumlah pelanggan kanal YouTube sebelum email dikirim.",
+    "needsReview": true
+  },
+  "matrix": [
+    {
+      "tool": "bahasa-bayi",
+      "intent": "Menginformasikan",
+      "segment": "Pragmatis",
+      "skill": "Literasi ekonomi"
+    },
+    {
+      "tool": "kuis-sesat-pikir",
+      "intent": "Mengasah",
+      "segment": "Debater",
+      "skill": "Nalar logis"
+    },
+    {
+      "tool": "simulator",
+      "intent": "Menumbuhkan empati",
+      "segment": "Aktivis",
+      "skill": "Empati dan aksi"
+    }
+  ],
+  "funnel": [
+    {
+      "stage": "Menonton",
+      "detail": "Views, Likes, Subscribe di YouTube",
+      "kpi": null
+    },
+    {
+      "stage": "Mencoba",
+      "detail": "Hitung, kuis, dan simulasi di web",
+      "kpi": "Pemikir aktif harian (streak kuis) dan skenario yang diselesaikan"
+    },
+    {
+      "stage": "Bertindak",
+      "detail": "Membuka tautan aksi sipil yang terverifikasi",
+      "kpi": "Konversi ke aksi sipil (klik tautan aksi)"
+    }
+  ],
+  "roadmap": [
+    {
+      "phase": "Fase 1",
+      "months": "Bulan 1–2",
+      "title": "Kuis Sesat Pikir harian",
+      "detail": "Paling cepat dibuat dan paling mudah menyebar. Membangun kebiasaan harian."
+    },
+    {
+      "phase": "Fase 2",
+      "months": "Bulan 3–4",
+      "title": "Kalkulator Bahasa Bayi",
+      "detail": "Butuh pemodelan data. Setiap angka bersumber dan bisa diperiksa."
+    },
+    {
+      "phase": "Fase 3",
+      "months": "Bulan 5–6",
+      "title": "Simulator Dampak",
+      "detail": "Paling padat narasi dan desain. Mengubah kisah dokumenter jadi pilihan yang dirasakan."
+    }
+  ],
+  "architecture": [
+    {
+      "layer": "Frontend",
+      "name": "Next.js dan React",
+      "detail": "Situs statis yang cepat, ramah ponsel, dan mudah dibagikan."
+    },
+    {
+      "layer": "Konten",
+      "name": "Headless CMS",
+      "detail": "Tim redaksi memperbarui soal, angka, dan skenario tanpa menulis kode. Di prototipe ini kontennya berupa JSON tervalidasi di balik satu lapisan pemuat."
+    },
+    {
+      "layer": "Hosting",
+      "name": "Serverless dan edge",
+      "detail": "Tanpa server untuk dirawat; tetap cepat saat video baru ramai ditonton."
+    }
+  ],
+  "about": {
+    "name": "Alif Lazuardi",
+    "bio": "Pengembang perangkat lunak yang sehari-hari menulis Go dan sedang belajar hal-hal baru. Prototipe ini saya bangun untuk menunjukkan, bukan sekadar menjelaskan, bagaimana penonton Malaka bisa ikut berlatih.",
+    "githubUrl": "https://github.com/aliflazuardi",
+    "repoUrl": "https://github.com/aliflazuardi/masyarakat-baru"
+  }
+}

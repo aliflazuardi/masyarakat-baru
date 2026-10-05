@@ -222,3 +222,49 @@ export type Province = z.infer<typeof Province>;
 export type Scenario = z.infer<typeof Scenario>;
 export type SceneNode = z.infer<typeof SceneNode>;
 export type EndingNode = z.infer<typeof EndingNode>;
+
+// ---------- Pitch (landing page and about) ----------
+
+export const Pitch = z.object({
+  audience: Figure,
+  matrix: z
+    .array(
+      z.object({
+        /** Route slug of the tool, without slashes (matches a TOOLS href). */
+        tool: slug,
+        intent: z.string().min(1),
+        segment: z.string().min(1),
+        skill: z.string().min(1),
+      }),
+    )
+    .length(3),
+  funnel: z
+    .array(
+      z.object({
+        stage: z.string().min(1),
+        detail: z.string().min(1),
+        kpi: z.string().nullable(),
+      }),
+    )
+    .length(3),
+  roadmap: z
+    .array(
+      z.object({
+        phase: z.string().min(1),
+        months: z.string().min(1),
+        title: z.string().min(1),
+        detail: z.string().min(1),
+      }),
+    )
+    .length(3),
+  architecture: z
+    .array(z.object({ layer: z.string(), name: z.string(), detail: z.string() }))
+    .length(3),
+  about: z.object({
+    name: z.string().min(1),
+    bio: z.string().min(1),
+    githubUrl: z.url(),
+    repoUrl: z.url(),
+  }),
+});
+export type Pitch = z.infer<typeof Pitch>;

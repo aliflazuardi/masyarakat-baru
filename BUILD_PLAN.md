@@ -547,8 +547,8 @@ Estimates are focused hours for one developer. Content writing is counted separa
 - [ ] Source licensed images and write `CREDITS.md` *(deferred: scenes are text-only for now; see Action Items)*
 
 ### Phase 4: Landing Page and Polish (about 1.5 days)
-- [ ] Landing page sections (§7.1)
-- [ ] `/tentang`: about, data sources, disclaimer, contact
+- [x] Landing page sections (§7.1) *(the "Mari ngobrol" CTA links to GitHub for now; LinkedIn and a mailto need the owner's choice, see Action Items)*
+- [x] `/tentang`: about, data sources, disclaimer, contact
 - [ ] OG images for each page
 - [ ] Accessibility pass (keyboard, screen reader spot-check, contrast)
 - [ ] Performance pass (Lighthouse at least 90 on all routes)
@@ -622,6 +622,8 @@ Append new entries; don't rewrite old ones.
 | 2026-10-02 | Runs are saved as `{seed, choiceIndexes}` and rebuilt with `replay()` | Deterministic, tiny, and a content change simply restarts the run instead of corrupting it | Saving full state |
 | 2026-10-02 | A test plays thousands of random runs to prove every ending is reachable with real meter values | Static graph checks miss endings that `requires` gates make unreachable (it caught one) | Structural validation only |
 | 2026-10-02 | Scenes ship without photos for now | No licensed photojournalism yet; text-first keeps pages fast | Stock photos of unrelated places |
+| 2026-10-05 | Landing and about copy lives in `pitch.json` (zod `Pitch`), read via `getPitch()`; `/tentang` data sources are derived from the calculator JSON by `getDataSources()` | Keeps "every number has a source" true for the 1.38M+ figure and avoids a hand-maintained source list drifting from the data | Hard-coded copy in the pages |
+| 2026-10-05 | Funnel is narrowing HTML bars, not an SVG curve | Simpler, accessible, no layout bugs at 360px | Hand-drawn SVG curve (§7.1) |
 
 ---
 
@@ -675,5 +677,6 @@ Deferred work that isn't tied to a phase. Review this list before Phase 5 (launc
 - [ ] **Simulator review** (listed in `npm run data:review`): confirm the Malaka video title for "Kisah aslinya", and check each "Ambil tindakan" link before setting `verifiedAt`.
 - [ ] Add a verified, active fundraising campaign (e.g. Kitabisa) for Rantau Bakula residents if one exists; none was found during Phase 3.
 - [ ] Ask Malaka (or WALHI Kalsel) for permission to use documentary stills in the simulator, with credits in `CREDITS.md`.
+- [ ] **Landing page contact and bio:** decide the public contact (mailto or Cal.com link, LinkedIn URL) and review the short bio in `pitch.json`; the 1.38M+ audience figure is flagged `needsReview` (see `npm run data:review`).
 - [ ] Have someone familiar with the Rantau Bakula case read Scenario A for accuracy and tone.
 

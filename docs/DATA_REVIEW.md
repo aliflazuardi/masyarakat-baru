@@ -6,7 +6,7 @@ Each item is shown in the calculator but has not yet been checked against its pr
 (UU APBN 2026 / Nota Keuangan, BPS tables, PMK). To sign one off: check the value, fix it if needed,
 remove `needsReview` from the JSON, and re-run the script.
 
-**26 item(s) to review**
+**27 item(s) to review**
 
 - [ ] **Bunga utang** (`alokasi_bunga_utang`): Rp599.44 T, official, [Kemenkeu, via Investor Trust](https://investortrust.id/macro/100822/kemenkeu-jaga-belanja-bunga-utang-2026-tak-melebar-dari-rp-599-44-triliun). Bagian dari fungsi pelayanan umum (Rp794,4 T). Dikunci di simulator: kewajiban yang harus dibayar.
 - [ ] **Pelayanan umum (selain bunga utang)** (`alokasi_pelayanan_umum`): Rp194.96 T, derived, [Kemenkeu, DJA: APBN 2026 Belanja Prioritas](https://anggaran.kemenkeu.go.id/in/post/apbn-2026:-belanja-prioritas-mewujudkan-kedaulatan-pangan,-energi,-dan-ekonomi). Fungsi pelayanan umum Rp794,4 T dikurangi bunga utang Rp599,44 T. Mengasumsikan bunga utang tercatat di fungsi ini.
@@ -23,6 +23,7 @@ remove `needsReview` from the JSON, and re-run the script.
 - [ ] **Rata-rata biaya revitalisasi satu sekolah** (`biaya_revitalisasi_sekolah`): Rp1.141.000.000, derived, [Kemendikdasmen, Revitalisasi Sekolah 2026](https://www.kemendikdasmen.go.id/berita/15603-revitalisasi-sekolah-melampaui-target-kemendikdasmen-siapkan-perluasan-program-tahun-2026). Rp13,4 T untuk 11.744 satuan pendidikan, dibulatkan.
 - [ ] **Pemangkasan subsidi energi yang dianggap menekan harga sedang** (`ambang_subsidi_sedang`): 10%, estimate, Asumsi model penyusun. Ilustratif: pemangkasan di atas angka ini ditampilkan sebagai tekanan harga energi "sedang".
 - [ ] **Pemangkasan subsidi energi yang dianggap menekan harga tinggi** (`ambang_subsidi_tinggi`): 30%, estimate, Asumsi model penyusun. Ilustratif: pemangkasan di atas angka ini ditampilkan sebagai tekanan harga energi "tinggi".
+- [ ] **Penonton dan pendengar Malaka Project** (`malaka_audience`): 1380000 orang, estimate, Deck "The Next Era of Malaka" (Malaka_Project_Overview.pdf). Angka dari deck pengajuan, dibulatkan ke bawah. Cocokkan dengan jumlah pelanggan kanal YouTube sebelum email dikirim.
 - [ ] **Aturan pajak 2026** (`tax.json`): brackets, PTKP, biaya jabatan, PPN efektif. Sources: [Tarif PPh Pasal 17 (UU 7/2021 HPP) dan PTKP (PMK 101/2016)](https://kalkulatorpajak.id/blog/pph-21/panduan-lengkap-pph-pasal-21); [Biaya jabatan 5%, maks. Rp6 juta/tahun (PMK 168/2023)](https://ortax.org/menentukan-biaya-jabatan-dan-biaya-pensiun-dalam-menghitung-pph-pasal-21); [PPN 12% x DPP 11/12 = efektif 11% untuk barang/jasa non-mewah (PMK 131/2024)](https://www.pajak.go.id/en/node/113453)
 - [ ] **UMP Jawa Barat** (`provinces.json`): Rp2.317.601, [Daftar UMP 2026, via Fortune Indonesia](https://www.fortuneidn.com/news/daftar-ump-2026-lengkap-38-provinsi-d7w03-00-dz73p-h06j9m)
 - [ ] **UMP Jawa Timur** (`provinces.json`): Rp2.446.880, [Daftar UMP 2026, via Fortune Indonesia](https://www.fortuneidn.com/news/daftar-ump-2026-lengkap-38-provinsi-d7w03-00-dz73p-h06j9m)

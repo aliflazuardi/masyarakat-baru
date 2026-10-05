@@ -5,8 +5,8 @@ import { readFile, writeFile, mkdir } from "node:fs/promises";
 
 const load = async (p) =>
   JSON.parse(await readFile(new URL(`../src/content/${p}`, import.meta.url)));
-const [budget, assumptions, tax, provinces] = await Promise.all(
-  ["budget.json", "assumptions.json", "tax.json", "provinces.json"].map(load),
+const [budget, assumptions, tax, provinces, pitch] = await Promise.all(
+  ["budget.json", "assumptions.json", "tax.json", "provinces.json", "pitch.json"].map(load),
 );
 
 const scenarioDir = new URL("../src/content/scenarios/", import.meta.url);
@@ -23,7 +23,7 @@ const unit = (f) =>
   ] ?? `${f.value} ${f.unit}`;
 const link = (label, url) => (url ? `[${label}](${url})` : label);
 
-const rows = [...budget, ...assumptions]
+const rows = [...budget, ...assumptions, pitch.audience]
   .filter((f) => f.needsReview)
   .map(
     (f) =>
