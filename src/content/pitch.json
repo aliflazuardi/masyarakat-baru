@@ -1,0 +1,93 @@
+{
+  "audience": {
+    "value": 1380000,
+    "label": "pendengar",
+    "source": "Malaka Project Overview (deck proposal)",
+    "sourceUrl": "https://www.youtube.com/@MalakaProjectid",
+    "note": "Angka dari deck proposal. Cek jumlah subscriber/pendengar terbaru sebelum mengirim email.",
+    "needsReview": true
+  },
+  "matrix": [
+    {
+      "tool": "Kalkulator Bahasa Bayi",
+      "href": "/bahasa-bayi/",
+      "accent": "teal",
+      "intent": "Memberi informasi",
+      "segment": "Pragmatis",
+      "series": "Bahasa Bayi / Danantara",
+      "skill": "Literasi ekonomi"
+    },
+    {
+      "tool": "Kuis & Kamus Sesat Pikir",
+      "href": "/kuis-sesat-pikir/",
+      "accent": "gold",
+      "intent": "Mempertajam",
+      "segment": "Pendebat",
+      "series": "The Court / Sabda PS",
+      "skill": "Penalaran logis"
+    },
+    {
+      "tool": "Simulator Dampak Sosial",
+      "href": "/simulator/",
+      "accent": "pink",
+      "intent": "Membangun empati",
+      "segment": "Aktivis",
+      "series": "Dokumenter investigasi (Rantau Bakula)",
+      "skill": "Empati & aksi"
+    }
+  ],
+  "kpis": [
+    {
+      "name": "Pemikir Aktif Harian",
+      "measure": "Kuis selesai dan streak harian",
+      "event": "quiz_completed"
+    },
+    {
+      "name": "Skenario Diselesaikan",
+      "measure": "Simulasi yang dimainkan sampai akhir",
+      "event": "scenario_completed"
+    },
+    {
+      "name": "Konversi ke Aksi Sipil",
+      "measure": "Klik ke tautan aksi (organisasi, donasi)",
+      "event": "action_link_clicked"
+    }
+  ],
+  "roadmap": [
+    {
+      "months": "Bulan 1–2",
+      "tool": "Kuis Sesat Pikir",
+      "accent": "gold",
+      "why": "Paling cepat dibangun dan paling mudah viral. Membangun kebiasaan kunjungan harian."
+    },
+    {
+      "months": "Bulan 3–4",
+      "tool": "Kalkulator Bahasa Bayi",
+      "accent": "teal",
+      "why": "Butuh pemodelan data dan penyempurnaan UI. Menumpang momentum berita ekonomi besar."
+    },
+    {
+      "months": "Bulan 5–6",
+      "tool": "Simulator Dampak Sosial",
+      "accent": "pink",
+      "why": "Padat narasi dan desain. Diluncurkan bersama dokumenter investigasi besar."
+    }
+  ],
+  "architecture": [
+    {
+      "layer": "Frontend",
+      "now": "Next.js + React, diekspor statis",
+      "production": "Next.js + React yang sama"
+    },
+    {
+      "layer": "Konten",
+      "now": "File JSON yang divalidasi skema",
+      "production": "Headless CMS: tim redaksi memperbarui kuis dan data tanpa menulis kode"
+    },
+    {
+      "layer": "Hosting",
+      "now": "GitHub Pages",
+      "production": "Edge/serverless: kuat menahan lonjakan trafik saat video baru tayang"
+    }
+  ]
+}

@@ -6,7 +6,7 @@ Each item is shown in the calculator but has not yet been checked against its pr
 (UU APBN 2026 / Nota Keuangan, BPS tables, PMK). To sign one off: check the value, fix it if needed,
 remove `needsReview` from the JSON, and re-run the script.
 
-**26 item(s) to review**
+**28 item(s) to review**
 
 - [ ] **Bunga utang** (`alokasi_bunga_utang`): Rp599.44 T, official, [Kemenkeu, via Investor Trust](https://investortrust.id/macro/100822/kemenkeu-jaga-belanja-bunga-utang-2026-tak-melebar-dari-rp-599-44-triliun). Bagian dari fungsi pelayanan umum (Rp794,4 T). Dikunci di simulator: kewajiban yang harus dibayar.
 - [ ] **Pelayanan umum (selain bunga utang)** (`alokasi_pelayanan_umum`): Rp194.96 T, derived, [Kemenkeu, DJA: APBN 2026 Belanja Prioritas](https://anggaran.kemenkeu.go.id/in/post/apbn-2026:-belanja-prioritas-mewujudkan-kedaulatan-pangan,-energi,-dan-ekonomi). Fungsi pelayanan umum Rp794,4 T dikurangi bunga utang Rp599,44 T. Mengasumsikan bunga utang tercatat di fungsi ini.
@@ -34,3 +34,5 @@ remove `needsReview` from the JSON, and re-run the script.
 - [ ] **Kisah aslinya (tambang)**: confirm the title of [Malaka Project: video tentang Rantau Bakula](https://youtu.be/IaNWK935srw)
 - [ ] **Action link (tambang)**: [Pelajari dampak tambang bersama JATAM](https://www.jatam.org/) (JATAM). Check it is legitimate, then set `verifiedAt`.
 - [ ] **Action link (tambang)**: [Dukung WALHI](https://www.walhi.or.id/) (WALHI). Check it is legitimate, then set `verifiedAt`.
+- [ ] **Audience figure on the landing page** (`pitch.json`): 1.380.000 pendengar. Angka dari deck proposal. Cek jumlah subscriber/pendengar terbaru sebelum mengirim email.
+- [ ] **Your profile** (`profile.json`): name "Khalifah Lazuardi", role "Software engineer (Go)", bio, and LinkedIn (none). These are placeholders.
