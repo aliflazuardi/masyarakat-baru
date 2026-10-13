@@ -17,7 +17,7 @@ const variants = {
 
 export function ButtonLink({ href, children, variant = "primary" }: ButtonLinkProps) {
   return (
-    <Link href={href} className={`${base} ${variants[variant]}`}>
+    <Link prefetch={false} href={href} className={`${base} ${variants[variant]}`}>
       {children}
     </Link>
   );

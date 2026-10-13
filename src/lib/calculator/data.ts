@@ -8,15 +8,9 @@ import type { ModelInputs } from "./reallocation";
 
 const LOCKED = new Set(["alokasi_bunga_utang"]);
 
-/** Big-number presets for Tab 1, in display order. */
-export const PRESET_KEYS = [
-  "belanja_negara",
-  "anggaran_mbg",
-  "anggaran_pendidikan",
-  "alokasi_subsidi_energi",
-  "alokasi_bunga_utang",
-  "aset_danantara",
-] as const;
+import { PRESET_KEYS } from "./keys";
+
+export { PRESET_KEYS };
 
 export const REQUIRED_FIGURES = [
   ...PRESET_KEYS,

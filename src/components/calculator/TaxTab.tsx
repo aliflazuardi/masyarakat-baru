@@ -158,7 +158,7 @@ export function TaxTab({ data }: { data: CalculatorData }) {
         </p>
 
         <div>
-          <h3 className="font-semibold">Ke mana pajakmu (dibagi sesuai porsi APBN 2026)</h3>
+          <h2 className="font-semibold">Ke mana pajakmu (dibagi sesuai porsi APBN 2026)</h2>
           <div className="mt-4">
             <BarList
               rows={allocation}

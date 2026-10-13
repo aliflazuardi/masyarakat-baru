@@ -547,11 +547,11 @@ Estimates are focused hours for one developer. Content writing is counted separa
 - [ ] Source licensed images and write `CREDITS.md` *(deferred: scenes are text-only for now; see Action Items)*
 
 ### Phase 4: Landing Page and Polish (about 1.5 days)
-- [ ] Landing page sections (§7.1)
-- [ ] `/tentang`: about, data sources, disclaimer, contact
-- [ ] OG images for each page
-- [ ] Accessibility pass (keyboard, screen reader spot-check, contrast)
-- [ ] Performance pass (Lighthouse at least 90 on all routes)
+- [x] Landing page sections (§7.1)
+- [x] `/tentang`: about, data sources, disclaimer, contact *(bio is a placeholder in `profile.json`)*
+- [x] OG images for each page
+- [x] Accessibility pass (keyboard, screen reader spot-check, contrast) *(axe WCAG 2.1 AA on every route + interactive states in E2E; a manual screen-reader pass is still worth doing)*
+- [x] Performance pass (Lighthouse at least 90 on all routes) *(90–97 mobile with devtools throttling; see Decision Log)*
 - [ ] Test on a real mid-range Android phone and on iOS Safari
 - [ ] Copy-edit all Indonesian text (ideally by a second reader)
 
@@ -622,6 +622,13 @@ Append new entries; don't rewrite old ones.
 | 2026-10-02 | Runs are saved as `{seed, choiceIndexes}` and rebuilt with `replay()` | Deterministic, tiny, and a content change simply restarts the run instead of corrupting it | Saving full state |
 | 2026-10-02 | A test plays thousands of random runs to prove every ending is reachable with real meter values | Static graph checks miss endings that `requires` gates make unreachable (it caught one) | Structural validation only |
 | 2026-10-02 | Scenes ship without photos for now | No licensed photojournalism yet; text-first keeps pages fast | Stock photos of unrelated places |
+| 2026-10-13 | Landing-page numbers and builder details live in `pitch.json` and `profile.json` | Keeps the "every number has a source" rule; the deck's 1,38 juta figure is flagged for review | Hard-coding in the page |
+| 2026-10-13 | OG images via `opengraph-image.tsx` + `next/og`, with a postbuild script that renames them to `.png` | Static export writes them without an extension, and GitHub Pages picks Content-Type from the extension; `metadataBase` includes `BASE_PATH` so URLs resolve under `/masyarakat-baru/` | Hand-made PNGs, satori script |
+| 2026-10-13 | Fonts via `next/font/local` (preloaded, size-adjusted fallback); preset chips in one scrollable row | Font swap was shifting the calculator layout (CLS 0.114 → 0.019) | `@fontsource` CSS imports, `font-display: optional` |
+| 2026-10-13 | `prefetch={false}` on navigation links | Every page prefetched all routes, doubling bytes on load (1,2 MB → 0,6 MB on the home page) | Default viewport prefetching |
+| 2026-10-13 | Quiz and simulator server-render a real first screen (how-to text, scenario intro) instead of a "loading" card, and the simulator renders the same tree before and after hydration | Their LCP was 4,5 s because content appeared only after hydration or was remounted | Client-only rendering |
+| 2026-10-13 | A unit test forbids value imports of `schema`/`content`/`calculator/data` in client components | One such import had put zod (~400 KB) in the browser bundle | Relying on review |
+| 2026-10-13 | Performance is judged with Lighthouse **devtools** throttling (90–97 on all routes, LCP ≈ 2,0 s); the default simulated mode scores 84–87 | Simulated mode counts the React/Next runtime as an LCP dependency even though the observed paint happens before it runs; webpack vs Turbopack made no difference | Dropping Next.js (contradicts the pitched stack) |
 
 ---
 
@@ -644,8 +651,8 @@ Append new entries; don't rewrite old ones.
 - [ ] Final site name and domain: `aliflazuardi.github.io/masyarakat-baru` for now; a custom domain later?
 - [ ] Should there be an English toggle (in case the founders want to show it to international partners)?
 - [ ] Which exact Malaka episodes to link for each tool? (Needs titles and URLs.)
-- [ ] How much of the builder's personal portfolio goes on `/tentang`?
-- [ ] For Rantau Bakula, which public reporting is the factual baseline?
+- [ ] How much of the builder's personal portfolio goes on `/tentang`? *(placeholder name/role/bio in `profile.json`; contact khalifahlf@gmail.com)*
+- [x] For Rantau Bakula, which public reporting is the factual baseline? *(WALHI, Mongabay, Kalimantan Post; plus the Malaka video)*
 
 ---
 
@@ -676,4 +683,7 @@ Deferred work that isn't tied to a phase. Review this list before Phase 5 (launc
 - [ ] Add a verified, active fundraising campaign (e.g. Kitabisa) for Rantau Bakula residents if one exists; none was found during Phase 3.
 - [ ] Ask Malaka (or WALHI Kalsel) for permission to use documentary stills in the simulator, with credits in `CREDITS.md`.
 - [ ] Have someone familiar with the Rantau Bakula case read Scenario A for accuracy and tone.
+- [ ] **Replace the placeholder bio** in `src/content/profile.json` (role, bio, optional LinkedIn) and remove `needsReview`.
+- [ ] Re-check the 1,38 juta audience figure in `src/content/pitch.json` against Malaka's current numbers.
+- [ ] Set `SITE_URL` (and drop `BASE_PATH`) when moving hosting, so OG and canonical URLs follow the new domain.
 
