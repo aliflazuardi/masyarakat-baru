@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import {
   getAssumptions,
+  getPitch,
+  getProfile,
   getBudgetFigures,
   getFallacies,
   getQuizPool,
@@ -16,6 +18,8 @@ describe("content files", () => {
     expect(() => getBudgetFigures()).not.toThrow();
     expect(() => getAssumptions()).not.toThrow();
     expect(() => getScenarios()).not.toThrow();
+    expect(() => getPitch()).not.toThrow();
+    expect(() => getProfile()).not.toThrow();
   });
 
   it("have unique fallacy slugs and resolvable related links", () => {

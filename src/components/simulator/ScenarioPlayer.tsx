@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { EndingNode, Scenario } from "@/content/schema";
 import { Card } from "@/components/ui/Card";
 import { ShareButton } from "@/components/ui/ShareButton";
@@ -28,22 +28,22 @@ function loadSaved(scenario: Scenario): RunState | null {
   return replay(scenario, saved.seed, saved.choices);
 }
 
+/**
+ * Server and client render the same intro tree, so hydration reuses the DOM (no
+ * late repaint hurting LCP). A saved run, which lives in localStorage, is restored
+ * in an effect after hydration; the start button stays disabled until then.
+ */
 export function ScenarioPlayer({ scenario }: { scenario: Scenario }) {
-  // The run depends on localStorage and a random seed, so render only on the client.
   const hydrated = useHydrated();
-  if (!hydrated) {
-    return (
-      <Card accent="pink" className="min-h-72">
-        <p className="text-muted">Menyiapkan simulasi…</p>
-      </Card>
-    );
-  }
-  return <Player scenario={scenario} />;
-}
-
-function Player({ scenario }: { scenario: Scenario }) {
-  const [run, setRun] = useState<RunState | null>(() => loadSaved(scenario));
+  const [run, setRun] = useState<RunState | null>(null);
   const topRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function restore() {
+      setRun(loadSaved(scenario));
+    }
+    restore();
+  }, [scenario]);
 
   function update(next: RunState | null) {
     setRun(next);
@@ -65,7 +65,10 @@ function Player({ scenario }: { scenario: Scenario }) {
   return (
     <div ref={topRef} className="scroll-mt-20">
       {run === null ? (
-        <Intro scenario={scenario} onStart={() => update(initialState(scenario, randomSeed()))} />
+        <Intro
+          scenario={scenario}
+          onStart={hydrated ? () => update(initialState(scenario, randomSeed())) : undefined}
+        />
       ) : currentNode(scenario, run).type === "ending" ? (
         <Ending scenario={scenario} run={run} onReplay={() => update(null)} />
       ) : (
@@ -79,7 +82,7 @@ function Player({ scenario }: { scenario: Scenario }) {
   );
 }
 
-function Intro({ scenario, onStart }: { scenario: Scenario; onStart: () => void }) {
+function Intro({ scenario, onStart }: { scenario: Scenario; onStart?: () => void }) {
   return (
     <Card accent="pink">
       <p className="text-xs font-semibold uppercase tracking-widest text-pink">
@@ -92,7 +95,8 @@ function Intro({ scenario, onStart }: { scenario: Scenario; onStart: () => void 
       <button
         type="button"
         onClick={onStart}
-        className="mt-6 inline-flex min-h-11 items-center justify-center rounded-xl bg-pink px-5 text-sm font-semibold text-bg hover:bg-pink/85"
+        disabled={!onStart}
+        className="mt-6 inline-flex min-h-11 items-center justify-center rounded-xl bg-pink px-5 text-sm font-semibold text-bg hover:bg-pink/85 disabled:cursor-wait disabled:opacity-60"
       >
         Mulai simulasi
       </button>

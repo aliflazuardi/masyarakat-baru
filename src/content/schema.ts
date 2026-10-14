@@ -28,8 +28,7 @@ export const Fallacy = z.object({
 
 // ---------- Quiz (Kuis Sesat Pikir) ----------
 
-/** Option value for a statement that contains no fallacy. */
-export const VALID_ARGUMENT = "valid";
+export { VALID_ARGUMENT } from "./constants";
 
 export const QuizItem = z
   .object({
@@ -120,6 +119,56 @@ export const Province = z.object({
   year: z.number().int(),
   source: z.string(),
   sourceUrl: z.url(),
+  needsReview: z.boolean().optional(),
+});
+
+// ---------- Landing page (pitch) and builder profile ----------
+
+export const Pitch = z.object({
+  audience: z.object({
+    value: z.number().int().positive(),
+    label: z.string(),
+    source: z.string(),
+    sourceUrl: z.url(),
+    note: z.string().optional(),
+    needsReview: z.boolean().optional(),
+  }),
+  matrix: z
+    .array(
+      z.object({
+        tool: z.string(),
+        href: z.string().startsWith("/"),
+        accent: z.enum(["teal", "gold", "pink"]),
+        intent: z.string(),
+        segment: z.string(),
+        series: z.string(),
+        skill: z.string(),
+      }),
+    )
+    .length(3),
+  kpis: z.array(z.object({ name: z.string(), measure: z.string(), event: z.string() })).min(1),
+  roadmap: z
+    .array(
+      z.object({
+        months: z.string(),
+        tool: z.string(),
+        accent: z.enum(["teal", "gold", "pink"]),
+        why: z.string(),
+      }),
+    )
+    .length(3),
+  architecture: z
+    .array(z.object({ layer: z.string(), now: z.string(), production: z.string() }))
+    .min(1),
+});
+
+export const Profile = z.object({
+  name: z.string().min(1),
+  role: z.string().min(1),
+  bio: z.string().min(1),
+  email: z.email(),
+  github: z.url(),
+  linkedin: z.url().nullable(),
   needsReview: z.boolean().optional(),
 });
 
@@ -220,5 +269,7 @@ export type FigureKind = z.infer<typeof FigureKind>;
 export type TaxRules = z.infer<typeof TaxRules>;
 export type Province = z.infer<typeof Province>;
 export type Scenario = z.infer<typeof Scenario>;
+export type Pitch = z.infer<typeof Pitch>;
+export type Profile = z.infer<typeof Profile>;
 export type SceneNode = z.infer<typeof SceneNode>;
 export type EndingNode = z.infer<typeof EndingNode>;

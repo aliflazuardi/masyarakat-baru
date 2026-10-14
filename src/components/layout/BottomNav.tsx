@@ -13,6 +13,7 @@ export function BottomNav() {
         {TOOLS.map((tool) => (
           <li key={tool.href}>
             <Link
+              prefetch={false}
               href={tool.href}
               className="flex min-h-14 flex-col items-center justify-center gap-1 text-xs text-muted"
             >
@@ -23,6 +24,7 @@ export function BottomNav() {
         ))}
         <li>
           <Link
+            prefetch={false}
             href="/tentang/"
             className="flex min-h-14 flex-col items-center justify-center gap-1 text-xs text-muted"
           >

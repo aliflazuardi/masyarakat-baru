@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { QuizItem } from "@/content/schema";
-import { VALID_ARGUMENT } from "@/content/schema";
+import { VALID_ARGUMENT } from "@/content/constants";
 import { Card } from "@/components/ui/Card";
 import { ShareButton } from "@/components/ui/ShareButton";
 import { track } from "@/lib/analytics";
@@ -39,13 +39,9 @@ function optionLabel(option: string, labels: OptionLabels) {
 /** The daily set depends on the client's clock, so it only renders after hydration. */
 export function DailyQuiz({ pool, labels }: DailyQuizProps) {
   const hydrated = useHydrated();
-  if (!hydrated) {
-    return (
-      <Card accent="gold" className="min-h-72">
-        <p className="text-muted">Menyiapkan kuis hari ini…</p>
-      </Card>
-    );
-  }
+  // Today's set depends on the client clock, so the server renders how-to-play
+  // instructions instead (real content for the first paint), swapped after hydration.
+  if (!hydrated) return <HowToPlay />;
   const day = wibDayIndex(new Date());
   return <QuizSession key={day} day={day} pool={pool} labels={labels} />;
 }
@@ -204,6 +200,19 @@ function QuizSession({ day, pool, labels }: DailyQuizProps & { day: number }) {
         </div>
       </Card>
     </div>
+  );
+}
+
+function HowToPlay() {
+  return (
+    <Card accent="gold" className="min-h-72">
+      <p className="text-xs font-semibold uppercase tracking-widest text-gold">Cara bermain</p>
+      <p className="mt-3 text-xl leading-relaxed font-semibold sm:text-2xl">
+        Setiap hari ada 3 pernyataan dari perdebatan publik. Tebak sesat pikir yang dipakai, atau
+        pilih &ldquo;Argumen Valid&rdquo; jika tidak ada.
+      </p>
+      <p className="mt-4 text-sm text-muted">Memuat soal hari ini…</p>
+    </Card>
   );
 }
 

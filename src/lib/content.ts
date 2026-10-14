@@ -4,12 +4,23 @@
 import assumptionsJson from "@/content/assumptions.json";
 import budgetJson from "@/content/budget.json";
 import fallaciesJson from "@/content/fallacies.json";
+import pitchJson from "@/content/pitch.json";
+import profileJson from "@/content/profile.json";
 import provincesJson from "@/content/provinces.json";
 import quizJson from "@/content/quiz.json";
 import rantauBakulaJson from "@/content/scenarios/rantau-bakula.json";
 import tambangJson from "@/content/scenarios/tambang.json";
 import taxJson from "@/content/tax.json";
-import { Fallacy, Figure, Province, QuizItem, Scenario, TaxRules } from "@/content/schema";
+import {
+  Fallacy,
+  Pitch,
+  Profile,
+  Figure,
+  Province,
+  QuizItem,
+  Scenario,
+  TaxRules,
+} from "@/content/schema";
 
 /** Scenario JSON files, keyed by slug. Register new scenarios here (Phase 3). */
 const scenarioFiles: Record<string, unknown> = {
@@ -51,4 +62,12 @@ export function getScenarios(): Scenario[] {
 
 export function getScenario(slug: string): Scenario | undefined {
   return getScenarios().find((s) => s.slug === slug);
+}
+
+export function getPitch(): Pitch {
+  return Pitch.parse(pitchJson);
+}
+
+export function getProfile(): Profile {
+  return Profile.parse(profileJson);
 }

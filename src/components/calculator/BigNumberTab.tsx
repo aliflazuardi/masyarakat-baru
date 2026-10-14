@@ -2,7 +2,7 @@
 
 import { useState, type ReactNode } from "react";
 import type { CalculatorData } from "@/lib/calculator/data";
-import { PRESET_KEYS } from "@/lib/calculator/data";
+import { PRESET_KEYS } from "@/lib/calculator/keys";
 import { rupiah, TRILIUN } from "@/lib/calculator/figures";
 import {
   formatCount,
@@ -39,7 +39,8 @@ export function BigNumberTab({ data }: { data: CalculatorData }) {
     <div className="grid gap-6">
       <fieldset>
         <legend className="mb-3 text-sm text-muted">Pilih angka raksasa</legend>
-        <div className="flex flex-wrap gap-2">
+        {/* One scrollable row on mobile: wrapping varied with the web-font swap and shifted layout (CLS). */}
+        <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:px-0">
           {PRESET_KEYS.map((k) => (
             <PresetChip key={k} active={selected === k} onClick={() => setSelected(k)}>
               {fig(k).label}
@@ -115,7 +116,7 @@ export function BigNumberTab({ data }: { data: CalculatorData }) {
       </div>
 
       <div>
-        <h3 className="font-semibold">Setara dengan…</h3>
+        <h2 className="font-semibold">Setara dengan…</h2>
         <ul className="mt-3 grid gap-3 sm:grid-cols-2">
           <Analogy
             value={howMany(pc.perPersonYear, fig("harga_mie_ayam").value)}
@@ -173,7 +174,7 @@ function PresetChip({
       type="button"
       aria-pressed={active}
       onClick={onClick}
-      className={`min-h-10 rounded-full border px-4 text-sm transition-colors ${
+      className={`min-h-10 shrink-0 rounded-full border px-4 text-sm whitespace-nowrap transition-colors ${
         active ? "border-teal bg-teal text-bg" : "border-border text-muted hover:text-text"
       }`}
     >
