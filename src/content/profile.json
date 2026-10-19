@@ -1,9 +1,25 @@
 {
   "name": "Khalifah Lazuardi",
-  "role": "Software engineer (Go)",
+  "role": "Software Engineer di Gojek",
   "bio": "Pengembang backend yang percaya teknologi bisa membuat warga lebih paham, lebih kritis, dan lebih peduli. Prototipe ini dibuat sebagai proposal untuk Malaka Project.",
   "email": "khalifahlf@gmail.com",
   "github": "https://github.com/aliflazuardi",
-  "linkedin": null,
+  "linkedin": "https://www.linkedin.com/in/aliflazuardi/",
+  "affiliations": [
+    {
+      "kind": "work",
+      "title": "Software Engineer",
+      "org": "Gojek",
+      "period": "Sekarang",
+      "logo": "/logos/gojek.svg"
+    },
+    {
+      "kind": "education",
+      "title": "Teknik Elektro, STEI",
+      "org": "Institut Teknologi Bandung",
+      "period": "2017–2021",
+      "logo": "/logos/itb.png"
+    }
+  ],
   "needsReview": true
 }

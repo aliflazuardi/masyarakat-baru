@@ -515,7 +515,7 @@ Estimates are focused hours for one developer. Content writing is counted separa
 - [x] ESLint, Prettier, Vitest, Playwright, and a GitHub Actions CI workflow
 - [x] Design tokens, fonts, layout shell, nav, footer disclaimer
 - [x] `storage.ts`, `analytics.ts` (no-op in dev), `content.ts` and zod schemas
-- [ ] Deploy the shell to GitHub Pages (`.github/workflows/deploy-pages.yml`) *(needs Settings → Pages → Source: GitHub Actions, then a push to `main`)*
+- [x] Deploy the shell to GitHub Pages (`.github/workflows/deploy-pages.yml`) *(live at `aliflazuardi.github.io/masyarakat-baru`)*
 
 ### Phase 1: Kamus + Kuis Sesat Pikir (about 1.5 days + content)
 *Mirrors the deck's Phase 1: quickest to build and the most viral.*
@@ -629,6 +629,8 @@ Append new entries; don't rewrite old ones.
 | 2026-10-13 | Quiz and simulator server-render a real first screen (how-to text, scenario intro) instead of a "loading" card, and the simulator renders the same tree before and after hydration | Their LCP was 4,5 s because content appeared only after hydration or was remounted | Client-only rendering |
 | 2026-10-13 | A unit test forbids value imports of `schema`/`content`/`calculator/data` in client components | One such import had put zod (~400 KB) in the browser bundle | Relying on review |
 | 2026-10-13 | Performance is judged with Lighthouse **devtools** throttling (90–97 on all routes, LCP ≈ 2,0 s); the default simulated mode scores 84–87 | Simulated mode counts the React/Next runtime as an LCP dependency even though the observed paint happens before it runs; webpack vs Turbopack made no difference | Dropping Next.js (contradicts the pitched stack) |
+| 2026-10-19 | Stay on GitHub Pages for launch; moving to Vercel/Netlify/Cloudflare stays in Action Items for later | Pages is set up and live, and is enough for the cold email | Migrating hosting before launch |
+| 2026-10-19 | The builder profile lists work and education with organisation logos (Gojek, ITB), served from `public/logos/` and credited in `CREDITS.md` | Gives the founders quick credibility signals on the landing page and `/tentang` | Text-only role line |
 
 ---
 
@@ -683,7 +685,7 @@ Deferred work that isn't tied to a phase. Review this list before Phase 5 (launc
 - [ ] Add a verified, active fundraising campaign (e.g. Kitabisa) for Rantau Bakula residents if one exists; none was found during Phase 3.
 - [ ] Ask Malaka (or WALHI Kalsel) for permission to use documentary stills in the simulator, with credits in `CREDITS.md`.
 - [ ] Have someone familiar with the Rantau Bakula case read Scenario A for accuracy and tone.
-- [ ] **Replace the placeholder bio** in `src/content/profile.json` (role, bio, optional LinkedIn) and remove `needsReview`.
+- [ ] **Replace the placeholder bio** in `src/content/profile.json` and remove `needsReview`. *(Role, LinkedIn and affiliations with logos are done; the name and bio still need confirming.)*
 - [ ] Re-check the 1,38 juta audience figure in `src/content/pitch.json` against Malaka's current numbers.
 - [ ] Set `SITE_URL` (and drop `BASE_PATH`) when moving hosting, so OG and canonical URLs follow the new domain.
 
