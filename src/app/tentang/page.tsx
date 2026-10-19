@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { Affiliations } from "@/components/profile/Affiliations";
 import { Card } from "@/components/ui/Card";
 import { getProfile, getScenarios } from "@/lib/content";
 import { DISCLAIMER } from "@/lib/site";
@@ -122,6 +123,7 @@ export default function AboutPage() {
         <p className="font-semibold">{profile.name}</p>
         <p className="text-sm text-muted">{profile.role}</p>
         <p className="mt-2">{profile.bio}</p>
+        <Affiliations items={profile.affiliations} />
         <p className="mt-3">
           <a
             href={`mailto:${profile.email}`}

@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Card } from "@/components/ui/Card";
 import { ButtonLink } from "@/components/ui/Button";
 import { accentBg, accentText } from "@/components/ui/accent";
+import { Affiliations } from "@/components/profile/Affiliations";
 import { getPitch, getProfile } from "@/lib/content";
 import { SITE_TAGLINE, TOOLS } from "@/lib/site";
 
@@ -210,6 +211,7 @@ export default function HomePage() {
           <p className="text-xl font-bold">{profile.name}</p>
           <p className="text-sm text-muted">{profile.role}</p>
           <p className="mt-3 max-w-2xl">{profile.bio}</p>
+          <Affiliations items={profile.affiliations} />
           <div className="mt-6 flex flex-wrap gap-3">
             <a
               href={`mailto:${profile.email}?subject=${encodeURIComponent("Malaka Interactive Suite")}`}

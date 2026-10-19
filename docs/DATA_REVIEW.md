@@ -35,4 +35,4 @@ remove `needsReview` from the JSON, and re-run the script.
 - [ ] **Action link (tambang)**: [Pelajari dampak tambang bersama JATAM](https://www.jatam.org/) (JATAM). Check it is legitimate, then set `verifiedAt`.
 - [ ] **Action link (tambang)**: [Dukung WALHI](https://www.walhi.or.id/) (WALHI). Check it is legitimate, then set `verifiedAt`.
 - [ ] **Audience figure on the landing page** (`pitch.json`): 1.380.000 pendengar. Angka dari deck proposal. Cek jumlah subscriber/pendengar terbaru sebelum mengirim email.
-- [ ] **Your profile** (`profile.json`): name "Khalifah Lazuardi", role "Software engineer (Go)", bio, and LinkedIn (none). These are placeholders.
+- [ ] **Your profile** (`profile.json`): confirm the name "Khalifah Lazuardi" and the bio, then remove `needsReview`. Role, LinkedIn and affiliations are confirmed.

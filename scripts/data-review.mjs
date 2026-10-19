@@ -61,7 +61,7 @@ if (pitch.audience.needsReview) {
 }
 if (profile.needsReview) {
   rows.push(
-    `- [ ] **Your profile** (\`profile.json\`): name "${profile.name}", role "${profile.role}", bio, and LinkedIn (${profile.linkedin ?? "none"}). These are placeholders.`,
+    `- [ ] **Your profile** (\`profile.json\`): confirm the name "${profile.name}" and the bio, then remove \`needsReview\`. Role, LinkedIn and affiliations are confirmed.`,
   );
 }
 

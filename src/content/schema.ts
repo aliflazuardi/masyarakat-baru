@@ -169,6 +169,16 @@ export const Profile = z.object({
   email: z.email(),
   github: z.url(),
   linkedin: z.url().nullable(),
+  /** Work and education entries, newest first. `logo` is a path under `public/`. */
+  affiliations: z.array(
+    z.object({
+      kind: z.enum(["work", "education"]),
+      title: z.string().min(1),
+      org: z.string().min(1),
+      period: z.string().min(1),
+      logo: z.string().startsWith("/"),
+    }),
+  ),
   needsReview: z.boolean().optional(),
 });
 
