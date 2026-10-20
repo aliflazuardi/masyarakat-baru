@@ -188,6 +188,7 @@ This is the page the cold email links to, so it must pitch quickly.
 5. **Consumption-to-Action funnel:** a simple SVG curve with the three KPIs.
 6. **Roadmap:** the three phases (months 1–6).
 7. **Architecture:** Next.js, headless CMS and edge, with the note "this prototype already runs on this stack."
+   - **Affordability:** a quote from Malaka's own Kampus Malaka reel (innovation in education stalls without affordable assessment), followed by why this suite is cheap to run.
 8. **About me and CTA:** a short bio, links to GitHub and LinkedIn, and a "Mari ngobrol" button (mailto or Cal.com link).
 
 **Acceptance:** the hero and tool cards are visible within the first two mobile screens. Every tool card links to a working tool.
@@ -631,6 +632,7 @@ Append new entries; don't rewrite old ones.
 | 2026-10-13 | Performance is judged with Lighthouse **devtools** throttling (90–97 on all routes, LCP ≈ 2,0 s); the default simulated mode scores 84–87 | Simulated mode counts the React/Next runtime as an LCP dependency even though the observed paint happens before it runs; webpack vs Turbopack made no difference | Dropping Next.js (contradicts the pitched stack) |
 | 2026-10-19 | Stay on GitHub Pages for launch; moving to Vercel/Netlify/Cloudflare stays in Action Items for later | Pages is set up and live, and is enough for the cold email | Migrating hosting before launch |
 | 2026-10-19 | The builder profile lists work and education with organisation logos (Gojek, ITB), served from `public/logos/` and credited in `CREDITS.md` | Gives the founders quick credibility signals on the landing page and `/tentang` | Text-only role line |
+| 2026-10-20 | Add an affordability section to the landing page, anchored on Malaka's reel [DPlFWcSEVYu](https://www.instagram.com/reel/DPlFWcSEVYu/) (#MenujuKampusMalaka, 9 Oct 2025) | Uses the founders' own argument that education innovation must be affordable; the static, serverless prototype already is | Making the cost case only in the architecture cards |
 
 ---
 

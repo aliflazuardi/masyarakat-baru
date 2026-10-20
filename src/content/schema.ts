@@ -160,6 +160,13 @@ export const Pitch = z.object({
   architecture: z
     .array(z.object({ layer: z.string(), now: z.string(), production: z.string() }))
     .min(1),
+  /** Malaka's own framing (Kampus Malaka reel) that innovation in education must be affordable. */
+  affordability: z.object({
+    quote: z.string().min(1),
+    source: z.string(),
+    sourceUrl: z.url(),
+    points: z.array(z.object({ title: z.string(), body: z.string() })).min(1),
+  }),
 });
 
 export const Profile = z.object({
