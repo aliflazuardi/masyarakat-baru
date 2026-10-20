@@ -89,5 +89,28 @@
       "now": "GitHub Pages",
       "production": "Edge/serverless: kuat menahan lonjakan trafik saat video baru tayang"
     }
-  ]
+  ],
+  "affordability": {
+    "quote": "Tanpa sistem assessment yang tepat dan terjangkau, semua inovasi hanya akan berhenti di konsep.",
+    "source": "Malaka Project di Instagram (#MenujuKampusMalaka), 9 Oktober 2025",
+    "sourceUrl": "https://www.instagram.com/reel/DPlFWcSEVYu/",
+    "points": [
+      {
+        "title": "Asesmen yang murah dijalankan",
+        "body": "Kuis Sesat Pikir menguji apakah seseorang benar-benar paham, setiap hari, dan dinilai otomatis di browser. Tidak perlu pengoreksi atau server."
+      },
+      {
+        "title": "Tanpa biaya server",
+        "body": "Situsnya statis: semua perhitungan dan simulasi berjalan di perangkat pengguna. Hosting prototipe ini gratis di GitHub Pages."
+      },
+      {
+        "title": "Ringan untuk ponsel dan kuota terbatas",
+        "body": "Tanpa library grafik dan tanpa akun. Dibuka dari tautan di deskripsi video, langsung bisa dipakai."
+      },
+      {
+        "title": "Konten diurus tim redaksi",
+        "body": "Soal kuis, data kalkulator, dan skenario ada di file konten. Lewat headless CMS, tim Malaka bisa memperbaruinya tanpa developer."
+      }
+    ]
+  }
 }

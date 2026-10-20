@@ -205,6 +205,41 @@ export default function HomePage() {
         </ul>
       </Section>
 
+      {/* 7b. Affordability, in Malaka's own words */}
+      <Section id="terjangkau" eyebrow="Biaya" title="Inovasi pendidikan harus terjangkau">
+        <Card accent="gold">
+          <figure>
+            <blockquote className="text-xl font-semibold sm:text-2xl">
+              “{pitch.affordability.quote}”
+            </blockquote>
+            <figcaption className="mt-3 text-sm text-muted">
+              <a
+                href={pitch.affordability.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gold underline-offset-4 hover:underline"
+              >
+                {pitch.affordability.source}
+              </a>
+            </figcaption>
+          </figure>
+        </Card>
+        <p className="mt-4 max-w-3xl text-muted">
+          Prinsip yang sama dengan Kampus Malaka: alat ini dibuat agar bisa diakses, dijalankan, dan
+          tetap berkualitas, dengan biaya operasional yang hampir nol.
+        </p>
+        <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+          {pitch.affordability.points.map((p) => (
+            <li key={p.title}>
+              <Card className="h-full">
+                <h3 className="font-semibold">{p.title}</h3>
+                <p className="mt-2 text-sm text-muted">{p.body}</p>
+              </Card>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
       {/* 8. About + CTA */}
       <Section id="kontak" eyebrow="Pembuat" title="Mari ngobrol">
         <Card accent="gold">
