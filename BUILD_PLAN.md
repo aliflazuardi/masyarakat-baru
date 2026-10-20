@@ -633,6 +633,7 @@ Append new entries; don't rewrite old ones.
 | 2026-10-19 | Stay on GitHub Pages for launch; moving to Vercel/Netlify/Cloudflare stays in Action Items for later | Pages is set up and live, and is enough for the cold email | Migrating hosting before launch |
 | 2026-10-19 | The builder profile lists work and education with organisation logos (Gojek, ITB), served from `public/logos/` and credited in `CREDITS.md` | Gives the founders quick credibility signals on the landing page and `/tentang` | Text-only role line |
 | 2026-10-20 | Add an affordability section to the landing page, anchored on Malaka's reel [DPlFWcSEVYu](https://www.instagram.com/reel/DPlFWcSEVYu/) (#MenujuKampusMalaka, 9 Oct 2025) | Uses the founders' own argument that education innovation must be affordable; the static, serverless prototype already is | Making the cost case only in the architecture cards |
+| 2026-10-20 | Calculator on phones: figure lists replace the methodology tables, and the Menkeu tab pins a deficit/education strip under the header once the meters scroll away | A `<fieldset>` and a grid item sized to their content widened the page to 1.420 px, zooming everything out on phones; the meters also disappeared while users moved the sliders | Sideways-scrolling tables |
 
 ---
 

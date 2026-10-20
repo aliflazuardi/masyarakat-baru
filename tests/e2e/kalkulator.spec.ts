@@ -44,3 +44,25 @@ test("debt interest is locked", async ({ page }) => {
   await page.goto("/bahasa-bayi/?tab=menkeu");
   await expect(page.locator("#slider-alokasi_bunga_utang")).toBeDisabled();
 });
+
+// On a mobile viewport an overflowing element zooms the whole page out instead of adding a
+// scrollbar, so compare against the device width rather than clientWidth.
+test("calculator fits a 360px phone on every tab, with the methodology open", async ({ page }) => {
+  await page.setViewportSize({ width: 360, height: 740 });
+  const pageWidth = () => page.evaluate(() => document.documentElement.scrollWidth);
+  for (const tab of ["angka", "pajak", "menkeu"]) {
+    await page.goto(`/bahasa-bayi/?tab=${tab}`);
+    expect(await pageWidth(), tab).toBeLessThanOrEqual(360);
+  }
+  await page.locator("#metodologi summary").click();
+  expect(await pageWidth()).toBeLessThanOrEqual(360);
+});
+
+test("menkeu tab pins a deficit summary once the meters scroll away", async ({ page }) => {
+  await page.setViewportSize({ width: 360, height: 740 });
+  await page.goto("/bahasa-bayi/?tab=menkeu");
+  await expect(page.getByTestId("sticky-summary")).toHaveCount(0);
+  await page.getByLabel("Transfer ke daerah (TKD)", { exact: true }).scrollIntoViewIfNeeded();
+  await expect(page.getByTestId("sticky-summary")).toBeVisible();
+  await expect(page.getByTestId("sticky-summary")).toContainText("Defisit");
+});
