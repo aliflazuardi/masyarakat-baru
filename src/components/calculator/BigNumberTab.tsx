@@ -37,7 +37,8 @@ export function BigNumberTab({ data }: { data: CalculatorData }) {
 
   return (
     <div className="grid gap-6">
-      <fieldset>
+      {/* min-w-0: a fieldset defaults to min-content width, so the chip scroller would widen the page. */}
+      <fieldset className="min-w-0">
         <legend className="mb-3 text-sm text-muted">Pilih angka raksasa</legend>
         {/* One scrollable row on mobile: wrapping varied with the web-font swap and shifted layout (CLS). */}
         <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:px-0">

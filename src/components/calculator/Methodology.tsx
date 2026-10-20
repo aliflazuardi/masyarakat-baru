@@ -62,7 +62,7 @@ export function Methodology({ data }: { data: CalculatorData }) {
         <summary className="cursor-pointer text-lg font-semibold">
           Bagaimana kami menghitung?
         </summary>
-        <div className="mt-4 grid gap-6 text-sm">
+        <div className="mt-4 grid grid-cols-[minmax(0,1fr)] gap-6 text-sm">
           <p className="text-muted">
             Semua angka berasal dari dokumen resmi atau dihitung dari angka resmi. Angka{" "}
             <em>perkiraan</em> adalah asumsi penyusun yang ditulis terbuka agar bisa diperiksa.
@@ -75,47 +75,48 @@ export function Methodology({ data }: { data: CalculatorData }) {
             return (
               <section key={g.title}>
                 <h3 className="font-semibold">{g.title}</h3>
-                <div className="mt-2 overflow-x-auto">
-                  <table className="w-full min-w-[36rem] text-left">
-                    <thead className="text-xs text-muted">
-                      <tr>
-                        <th className="py-1 pr-3 font-normal">Angka</th>
-                        <th className="py-1 pr-3 font-normal">Nilai</th>
-                        <th className="py-1 pr-3 font-normal">Jenis</th>
-                        <th className="py-1 font-normal">Sumber</th>
+                {/* Phones: one card per figure. A 4-column table would need sideways scrolling. */}
+                <ul className="mt-2 sm:hidden">
+                  {rows.map((f) => (
+                    <li key={f.key} className="border-t border-border py-2">
+                      <div className="flex items-baseline justify-between gap-3">
+                        <span>{f.label}</span>
+                        <span className="num shrink-0">{formatValue(f)}</span>
+                      </div>
+                      {f.note && <p className="mt-0.5 text-xs text-muted">{f.note}</p>}
+                      <p className="mt-1 text-xs text-muted">
+                        {KIND_LABEL[f.kind]} · <FigureSource figure={f} />
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+                <table className="mt-2 hidden w-full text-left sm:table">
+                  <thead className="text-xs text-muted">
+                    <tr>
+                      <th className="py-1 pr-3 font-normal">Angka</th>
+                      <th className="py-1 pr-3 font-normal">Nilai</th>
+                      <th className="py-1 pr-3 font-normal">Jenis</th>
+                      <th className="py-1 font-normal">Sumber</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {rows.map((f) => (
+                      <tr key={f.key} className="border-t border-border align-top">
+                        <td className="py-2 pr-3">
+                          {f.label}
+                          {f.note && (
+                            <span className="mt-0.5 block text-xs text-muted">{f.note}</span>
+                          )}
+                        </td>
+                        <td className="num py-2 pr-3 whitespace-nowrap">{formatValue(f)}</td>
+                        <td className="py-2 pr-3">{KIND_LABEL[f.kind]}</td>
+                        <td className="py-2">
+                          <FigureSource figure={f} />
+                        </td>
                       </tr>
-                    </thead>
-                    <tbody>
-                      {rows.map((f) => (
-                        <tr key={f.key} className="border-t border-border align-top">
-                          <td className="py-2 pr-3">
-                            {f.label}
-                            {f.note && (
-                              <span className="mt-0.5 block text-xs text-muted">{f.note}</span>
-                            )}
-                          </td>
-                          <td className="num py-2 pr-3 whitespace-nowrap">{formatValue(f)}</td>
-                          <td className="py-2 pr-3">{KIND_LABEL[f.kind]}</td>
-                          <td className="py-2">
-                            {f.sourceUrl ? (
-                              <a
-                                href={f.sourceUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="underline underline-offset-2"
-                              >
-                                {f.source}
-                              </a>
-                            ) : (
-                              f.source
-                            )}{" "}
-                            ({f.year})
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                    ))}
+                  </tbody>
+                </table>
               </section>
             );
           })}
@@ -186,6 +187,26 @@ export function Methodology({ data }: { data: CalculatorData }) {
           </section>
         </div>
       </details>
+    </>
+  );
+}
+
+function FigureSource({ figure: f }: { figure: Figure }) {
+  return (
+    <>
+      {f.sourceUrl ? (
+        <a
+          href={f.sourceUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline underline-offset-2"
+        >
+          {f.source}
+        </a>
+      ) : (
+        f.source
+      )}{" "}
+      ({f.year})
     </>
   );
 }

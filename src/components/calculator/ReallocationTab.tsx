@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { CalculatorData } from "@/lib/calculator/data";
 import { formatDelta, formatPercent, formatRupiahShort } from "@/lib/calculator/format";
 import {
@@ -29,6 +29,19 @@ export function ReallocationTab({ data, scenario, onChange }: Props) {
   const { model } = data;
   const result = evaluate(model, scenario);
   const [copied, setCopied] = useState(false);
+  // On phones the meters scroll away while the sliders are in use, so a compact copy pins under the header.
+  const metersRef = useRef<HTMLDivElement>(null);
+  const [metersVisible, setMetersVisible] = useState(true);
+
+  useEffect(() => {
+    const el = metersRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+    const io = new IntersectionObserver(([entry]) => setMetersVisible(entry.isIntersecting), {
+      rootMargin: "-56px 0px 0px 0px",
+    });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   function set(key: string, value: number) {
     onChange(normalizeScenario(model.categories, { ...scenario, [key]: value }));
@@ -56,7 +69,15 @@ export function ReallocationTab({ data, scenario, onChange }: Props) {
 
   return (
     <div className="grid gap-6">
-      <div className="grid gap-3 sm:grid-cols-3">
+      {!metersVisible && (
+        <StickySummary
+          deficitPct={result.deficitPct}
+          deficitBad={result.deficitPct > model.deficitCapPct}
+          educationPct={result.educationPct}
+          educationBad={result.educationPct < model.educationMinPct}
+        />
+      )}
+      <div ref={metersRef} className="grid gap-3 sm:grid-cols-3">
         <Meter
           label="Defisit terhadap PDB"
           value={result.deficitPct}
@@ -178,6 +199,34 @@ export function ReallocationTab({ data, scenario, onChange }: Props) {
         <span aria-live="polite" className="text-xs text-muted">
           {copied && "Tautan skenario tersalin!"}
         </span>
+      </div>
+    </div>
+  );
+}
+
+/** Phone-only strip with the two legal limits; aria-hidden because the full meters announce changes. */
+function StickySummary(p: {
+  deficitPct: number;
+  deficitBad: boolean;
+  educationPct: number;
+  educationBad: boolean;
+}) {
+  const item = (label: string, value: string, bad: boolean) => (
+    <span className={`flex items-center gap-1.5 ${bad ? "text-bad" : "text-good"}`}>
+      <span>{bad ? "⚠" : "✓"}</span>
+      <span className="text-muted">{label}</span>
+      <span className="num font-semibold">{value}</span>
+    </span>
+  );
+  return (
+    <div
+      aria-hidden
+      data-testid="sticky-summary"
+      className="fixed inset-x-0 top-14 z-10 border-b border-border bg-bg/90 backdrop-blur sm:hidden"
+    >
+      <div className="flex items-center justify-between gap-3 px-4 py-2 text-xs">
+        {item("Defisit", formatPercent(p.deficitPct, 2), p.deficitBad)}
+        {item("Pendidikan", formatPercent(p.educationPct), p.educationBad)}
       </div>
     </div>
   );

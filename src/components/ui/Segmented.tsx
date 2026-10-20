@@ -17,7 +17,7 @@ export function Segmented<T extends string>({
   onChange,
 }: SegmentedProps<T>) {
   return (
-    <fieldset>
+    <fieldset className="min-w-0">
       <legend className="mb-2 text-sm text-muted">{label}</legend>
       <div className="flex flex-wrap gap-2">
         {options.map((o) => (
